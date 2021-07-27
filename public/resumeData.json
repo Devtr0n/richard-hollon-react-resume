@@ -1,153 +1,161 @@
 {
   "main": {
-    "name": "Tim Baker",
-    "occupation": "(Your Occupation Here)",
-    "description": "Here will be your description. Use this to describe what you do or whatever you feel best describes yourself to a potential employer",
-    "image": "profilepic.jpg",
-    "bio": "Use this bio section as your way of describing yourself and saying what you do, what technologies you like to use or feel most comfortable with, describing your personality, or whatever else you feel like throwing in.",
-    "contactmessage": "Here is where you should write your message to readers to have them get in contact with you.",
-    "email": "youremailhere@gmail.com",
-    "phone": "555-555-5555",
-    "address": {
-      "street": "(Your Street)",
-      "city": "(Your City)",
-      "state": "(Your State)",
-      "zip": "(Your Zip/Postal Code)"
+    "name":"Richard Hollon",
+    "occupation":"Senior Full Stack .NET Developer",
+    "description":"with over 20 years of relevant experience.",
+    "image":"profilepic.jpg",
+    "bio":"I (Richard Hollon) am a 41 year old software engineer based in Austin, Texas USA. I enjoy programming in the Microsoft stack: C#, PowerShell, JavaScript, ASP.NET MVC, HTML5, jQuery, Linq-to-EF, Web API 2/REST and SQL. I also advocate agile practices, continuous integration and domain driven design.",
+    "bio2":"I am an avid traveller, having most recently visited: Colorado Rocky Mountains, New Orleans (Mardi Gras/Honeymoon), Budapest Hungary, Moscow Russia, Tbilisi Georgia (engagement), Athens Greece and Sochi/Krasnodar Russia. On March 3rd, 2019 I married the woman of my dreams at Mount Bonnell in Austin, Texas USA.",
+    "bio3": "In my free time I enjoy: playing my Martin guitar (a lefty), cooking different recipes (try me), cold-brewing coffee, bicycling Austin's trails and boardwalk, swimming, freshwater fishing, dove hunting, two-steppin' across Texas, editing vacation videos and so much more. This website was re-written in ReactJS during some rare free time (Oct 2019). This website was last updated (July 26th, 2021).",
+    "contactmessage":"Feel free to get in contact with me.",
+    "email": "richardsmailbox@gmail.com",
+    "address":{
+      "street":"665 N. Bagdad Rd",
+      "city":"Leander",
+      "state":"Texas",
+      "zip": "78641"
     },
-    "website": "http://www.timbakerdev.com",
-    "resumedownload": "http://timbakerdev.com",
-    "social": [
+    "website": "http://www.richardhollon.com",
+    "resumedownload":"/content/Richard.Hollon.Resume.2021.pdf",
+    "social":[
       {
-        "name": "facebook",
-        "url": "http://facebook.com/tim.baker.906",
-        "className": "fa fa-facebook"
+        "name":"stackoverflow",
+        "url":"https://stackoverflow.com/users/40899/d3vtr0n?tab=profile",
+        "className":"fa fa-stack-overflow"
       },
       {
-        "name": "twitter",
-        "url": "http://twitter.com",
-        "className": "fa fa-twitter"
+        "name":"linkedin",
+        "url":"https://www.linkedin.com/in/richardhollon/",
+        "className":"fa fa-linkedin"
       },
       {
-        "name": "linkedin",
-        "url": "https://www.linkedin.com/in/tim-baker-8420009a/",
-        "className": "fa fa-linkedin"
+        "name":"instagram",
+        "url":"http://instagram.com/nekotakacho",
+        "className":"fa fa-instagram"
       },
       {
-        "name": "instagram",
-        "url": "http://instagram.com/tbaker_x",
-        "className": "fa fa-instagram"
-      },
-      {
-        "name": "github",
-        "url": "http://github.com/tbakerx",
-        "className": "fa fa-github"
+        "name":"github",
+        "url":"http://github.com/Devtr0n",
+        "className":"fa fa-github"
       }
     ]
   },
-  "resume": {
-    "skillmessage": "Here you can create a short write-up of your skills to show off to employers",
-    "education": [
+  "resume":{
+    "skillmessage":"",
+    "education":[
       {
-        "school": "University?",
-        "degree": "Masters in Beer tasting",
-        "graduated": "April 2007",
-        "description": "Describe your experience at school, what you learned, what useful skills you have acquired etc."
+        "school":"Texas State Technical College",
+        "degree":"A.A.S. degree in Computer Science",
+        "graduated":"August 2001 - GPA 3.2",
+        "description":"Courses: Logic and Design, Systems Analysis, Qbasic, IBM COBOL I, II, III, RPG II & IV, Java JDK, C.I.C.S., ALC (Assembler), Unix Sun Solaris, Borland C++, Visual Basic 6 I & II, Visual C++ 6 I & II, Oracle SQL, Oracle PL/SQL."
       },
       {
-        "school": "School #1 Maybe College?",
-        "degree": "What did you study 101",
-        "graduated": "March 2003",
-        "description": "Describe your experience at school, what you learned, what useful skills you have acquired etc."
+        "school":"Plano East Senior High School",
+        "degree":"Advanced Placement Art Course",
+        "graduated":"May 1998",
+        "description":"Advanced art courses with opportunities at Booker T Washington arts magnet school."
       }
     ],
-    "work": [
+    "work":[
       {
-        "company": "Awesome Design Studio",
-        "title": "Senior UX God ",
-        "years": "March 2010 - Present",
-        "description": "Describe work, special projects, notable achievements, what technologies you have been working with, and anything else that would be useful for an employer to know."
+        "company":"iA American Warranty Group (Austin, TX)",
+        "title":"Senior Software Developer (remote)",
+        "years":"Feb 2020 - Present",
+        "description":"Lead development efforts and maintenance of greenfield ASP.NET Core projects for automobile warranty products."
       },
       {
-        "company": "Super Cool Studio",
-        "title": "Junior bug fixer",
-        "years": "March 2007 - February 2010",
-        "description": "Describe work, special projects, notable achievements, what technologies you have been working with, and anything else that would be useful for an employer to know."
-      }
+        "company":"Xcentium (Los Angeles, CA)",
+        "title":"Senior Software Developer (remote)",
+        "years":"Feb 2019 - Feb 2020",
+        "description":"Lead development efforts and maintenance of Incentive Commission Program, an internal financial incentive payout application for the Western Alliance Bank Corporation (Phoenix, AZ) and the Bank of Nevada. Assisted in application transition and migration to Azure cloud. Migrated JIRA backlog and sprints to Azure DevOps and Team Foundation Server 2019. Managed backlog and sprint planning and assisted in release deployments and release documentation. Troubleshooting of production SSIS packages for failing commission payments and commission processing. Mentored junior level team members in various remote locations. Assisted in team code reviews, GIT pull request approvals, architectural design planning and maintenance strategies. Assisted in database server migration from SQL 2012 to SQL 2016. Adhered to all WAB security protocols and security training."
+      },
+      {
+        "company":"Texas Workforce Commission (Texas State Capitol)",
+        "title":"Senior Full Stack .NET Consultant",
+        "years":"Feb 2016 - Feb 2019",
+        "description":"Planned, architected, developed, tested, released and supported web 2.0 initiatives within the LMCI department of TWC. Re-designed several legacy applications into modern web applications for public and internal use, while meeting all deadlines and project goals. Participated in all aspects of all project phases. Technologies included: C#, WebAPI 2, Entity Framework, OData v4 and Linq-to-EF, HTML5, Bootstrap 4, jQuery 3.1, JavaScript (ES6), Backgrid/Backbone, and Kendo UI Professional (grids, pdf, Excel, etc.), targeting mobile browsers and devices supporting IE, Chrome and Safari." 
+      },
+      {
+        "company":"Texas Education Agency (Texas State Capitol)",
+        "title":"Programmer V",
+        "years":"Feb 2014 - Feb 2016",
+        "description":"Maintained, supported and enhanced eGrants, a legacy ASP.NET 3.5 web application distributing $20 billion yearly in education grants for Texaspublic school funding. Architected, designed, developed, built, tested and released the 2015 NCLB (No Child Left Behind) Federal Report card for the Obama Administration's auditing of Highly Qualified Teachers at the state, district and campus levels in Texas public schools.  Maintained, supported and enhanced the Consolidated Entitlement Management System (CEMS), a legacy MVC web application, used for allocating and calculating monies for Texas public schools. Assisted in upgrading CEMS to MVC 5/SQL 2012."
+      }      
     ],
-    "skills": [
+    "skills":[
       {
-        "name": "Git",
-        "level": "60%"
+        "name":"C#",
+        "level":"95%"
       },
       {
-        "name": "Illustrator",
-        "level": "55%"
+        "name":"ASP.NET MVC",
+        "level":"85%"
       },
       {
-        "name": "ReactJs",
-        "level": "50%"
+        "name":"PowerShell",
+        "level":"75%"
       },
       {
-        "name": "CSS",
-        "level": "90%"
+        "name":"SQL",
+        "level":"90%"
       },
       {
-        "name": "HTML5",
-        "level": "80%"
+        "name":"HTML5",
+        "level":"89%"
       },
       {
-        "name": "VueJs",
-        "level": "50%"
+        "name":"JavaScript",
+        "level":"87%"
       },
       {
-        "name": "MongoDB",
-        "level": "80%"
+        "name":"Objective-C",
+        "level":"85%"
       }
     ]
   },
-  "portfolio": {
+  "portfolio":{
     "projects": [
       {
-        "title": "Canadian Wanderlust",
-        "category": "My Travel Blog for my post-university travels",
-        "image": "canadian-wanderlust.jpg",
-        "url": "https://www.canadianwanderlust.com"
+        "title":"Texas Career Check",
+        "category":"An exploration tool built for students to research different careers and schools.",
+        "image":"texascareercheck.jpg",
+        "url":"https://www.texascareercheck.com"
       },
       {
-        "title": "Fury Fighting Gear",
-        "category": "(offline now) A fighting gear company I started",
-        "image": "fury-fighting-gear.jpg",
-        "url": "http://www.timbakerdev.com"
+        "title":"Texas Labor Analysis",
+        "category":"TTexas labor market's online Regional Occupational Analysis Tool, that can provide insights into the labor workforce statistics.",
+        "image":"texaslaboranalysis.jpg",
+        "url":"http://www.texaslaboranalysis.com"
       },
       {
-        "title": "Original Thai Food",
-        "category": "Website I built for a restaurant I like in Thailand",
-        "image": "original-thai-food.jpg",
-        "url": "http://www.timbakerdev.com/originalthaifood.github.io"
+        "title":"Texas Labor Market Information",
+        "category":"Texas labor market's labor market statistics.",
+        "image":"texaslmi.jpg",
+        "url":"http://www.texaslmi.com"
       },
       {
-        "title": "Resume Website",
-        "category": "A React based resume website template",
-        "image": "resume-website.jpg",
-        "url": "http://www.timbakerdev.com"
+        "title":"Incenergy iPhone app",
+        "category":"A smart device/HVAC control iPhone app for an Austin IoT startup. HVAC control, lighting control, electric / gas / water / refrigeration metering.",
+        "image":"incenergy.jpg",
+        "url":"https://apps.apple.com/us/app/incenergy/id561073890"
       },
       {
-        "title": "Smirkspace",
-        "category": "(MVP Only) A React and Meteor based chat University project.",
-        "image": "smirkspace.jpg",
-        "url": "http://www.smirkspace.com"
+        "title":"eGrants",
+        "category":"Texas Education Agency eGrants system for public school funding.",
+        "image":"texaseducationagency.jpg",
+        "url":"https://tea.texas.gov/grants/"
       }
     ]
   },
-  "testimonials": {
-    "testimonials": [
+  "testimonials":{
+    "testimonials":[
       {
-        "text": "Here you should write some nice things that someone has said about you. No lies though, employers can tell when you are lying.",
-        "user": "Kareem Abdul Jabbar"
+        "text":"Richard is passionate, hardworking and an outstanding resource and contributing team member when developing enterprise software applications under a rigorous schedule. It has been my privelege to hire and work with him. Not bad for an American!",
+        "user":"Timothy Walters - CIO at Autism Community Network - Adelaide, Australia"
       },
       {
-        "text": "That Tim Baker must be one of the most brilliant developers I've ever met! It is amazing that nobody has hired him yet. Hey you, you should hire this guy, he may be fresh out of University and have zero on the job experience but I am confident that he will be one of your best developers in no time!",
-        "user": "Steve Wozniak... impersonator"
+        "text":"Richard has helped my department (LMCI) deliver three substantial data intensive websites used by the State of Texas Legislature and Governor's office. He has helped us earn two government achievement awards and recognition from the governor's office at the Texas State Capitol. I highly recommend his work and attention to detail on modern web application and design.",
+        "user":"Mark Duksta - Director of IT @ Labor Market and Career Information Department of the Texas Workforce Commission"
       }
     ]
   }
