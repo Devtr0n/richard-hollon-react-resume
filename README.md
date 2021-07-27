@@ -5,6 +5,9 @@
 ## Description
 This is my current website using a forked ReactJS template created by [Tim Baker](https://github.com/tbakerx/react-resume-template). I customized the content, per instructions and documentation, to quickly produce my own personal website using a lightweight and modern web stack.
 
+## Installation / Deployment
+What worked for me was using `yarn install` and `yarn build`, which assembles and manifests the project into binary assemblies. I copied the build folder contents to my website root http directory. I then had to add an `.htaccess` file and add the `MIME types` for `application/json .json` and `text/json .json` for the website to load. I then added a hard `<link>` reference to fontawesome in `index.html` to get missing fonts symbols to appear. I am unsure why they do not compile correctly in yarn.
+
 ## Credits
 ##### Udemy Course
 <a href="https://www.udemy.com/projects-in-reactjs-the-complete-react-learning-course/learn/v4/overview">Projects in ReactJS: The Complete React Learning Course by Eduonix</a>
