@@ -68,8 +68,16 @@ The site is served at `www.richardhollon.com` via GitHub Pages. This requires:
 - A `public/CNAME` file containing `www.richardhollon.com` (copied into every build so the custom domain persists across deploys).
 - GitHub repo Settings → Pages: Source = "Deploy from a branch" (`gh-pages` / root), with the custom domain configured and "Enforce HTTPS" enabled.
 
+### Contact form
+GitHub Pages only serves static files, so the contact form posts directly from the browser to [Formspree](https://formspree.io/) instead of a custom backend.
+1. Create a free form at [formspree.io](https://formspree.io/) and copy its endpoint URL (e.g. `https://formspree.io/f/abcdwxyz`).
+2. Set `VITE_FORMSPREE_ENDPOINT` to that URL:
+   - Locally: copy `.env.example` to `.env.local` and fill it in.
+   - In CI: add a repository secret named `VITE_FORMSPREE_ENDPOINT` (Settings → Secrets and variables → Actions) — the [deploy workflow](.github/workflows/deploy.yml) passes it into the build.
+
+If the variable isn't set, the form shows an error asking the visitor to email directly instead of failing silently.
+
 ## Roadmap
-- [ ] Replace the static contact form with a hosting-compatible submission service (e.g. Formspree/EmailJS) or `mailto:` fallback
 - [ ] Consider migrating class components to function components/hooks
 - [ ] Evaluate a full framework rewrite (see note below)
 
