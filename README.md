@@ -8,8 +8,9 @@
 ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
 ![GitHub Pages](https://img.shields.io/badge/github%20pages-121013?style=for-the-badge&logo=github&logoColor=white)
+[![codecov](https://codecov.io/gh/Devtr0n/richard-hollon-react-resume/branch/master/graph/badge.svg)](https://codecov.io/gh/Devtr0n/richard-hollon-react-resume)
 
-![Richard Hollon Website](resume-screenshot.jpg?raw=true "Richard Hollon Website")
+![Richard Hollon Website]
 
 ### [Live site &rarr; www.richardhollon.com](https://www.richardhollon.com/)
 
@@ -43,7 +44,12 @@ Run the test suite (Vitest):
 npm run test
 ```
 
-Build a production bundle to `build/`:
+Run the test suite with code coverage (writes an HTML report to `coverage/index.html`):
+```
+npm run test:coverage
+```
+
+Build a production bundle
 ```
 npm run build
 ```

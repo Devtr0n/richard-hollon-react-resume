@@ -1,0 +1,38 @@
+import { describe, it, expect } from 'vitest';
+import { render, screen } from '@testing-library/react';
+import Portfolio from './Portfolio';
+
+const data = {
+  projects: [
+    {
+      title: 'Project One',
+      category: 'Web App',
+      image: 'project-one.jpg',
+      url: 'https://example.com/project-one',
+    },
+    {
+      title: 'Project Two',
+      category: 'API',
+      image: 'project-two.jpg',
+      url: 'https://example.com/project-two',
+    },
+  ],
+};
+
+describe('Portfolio', () => {
+  it('renders a link for each project with its real external url', () => {
+    render(<Portfolio data={data} />);
+    data.projects.forEach((project) => {
+      const link = screen.getByTitle(project.title);
+      expect(link).toHaveAttribute('href', project.url);
+    });
+  });
+
+  it('renders the project title and category', () => {
+    render(<Portfolio data={data} />);
+    data.projects.forEach((project) => {
+      expect(screen.getByText(project.title)).toBeInTheDocument();
+      expect(screen.getByText(project.category)).toBeInTheDocument();
+    });
+  });
+});

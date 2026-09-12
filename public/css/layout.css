@@ -33,7 +33,7 @@ header {
    height: 100vh;
    min-height: 500px;
    width: 100%;
-   background: #161415 url(../images/header-background.jpg) no-repeat top center;
+   background: #161415 url(../images/header-background.jpg) no-repeat center bottom;
    background-size: cover !important;
 	-webkit-background-size: cover !important;
    text-align: center;
@@ -51,15 +51,22 @@ header .banner {
    display: inline-block;
    vertical-align: middle;
    margin: 0 auto;
-   width: 85%;
+   width: 90%;
+   max-width: 1100px;
    padding-bottom: 30px;
    text-align: center;
 }
 
-header .banner-text { width: 100%; }
+header .banner-text {
+   width: 100%;
+   background-color: rgba(20, 45, 55, .25);
+   border-radius: 6px;
+   padding: 40px 50px;
+   display: inline-block;
+}
 header .banner-text h1 {
    font-family: 'opensans-bold', sans-serif;
-   font-size: clamp(40px, 8vw, 90px);
+   font-size: clamp(40px, 6vw, 68px);
    line-height: 1.1em;
    color: #fff;
    letter-spacing: -2px;
@@ -67,10 +74,11 @@ header .banner-text h1 {
    text-shadow: 0px 1px 3px rgba(0, 0, 0, .8);
 }
 header .banner-text h3 {
-   font: 18px/1.9em 'librebaskerville-regular', serif;
+   font: 18px/1.7em 'librebaskerville-regular', serif;
    color: #A8A8A8;
    margin: 0 auto;
-   width: 70%;
+   width: 90%;
+   max-width: 800px;
    text-shadow: 0px 1px 2px rgba(0, 0, 0, .5);
 }
 header .banner-text h3 span,
@@ -98,6 +106,38 @@ header .social li {
 }
 header .social li a { color: #fff; }
 header .social li a:hover { color: #11ABB0; }
+
+/* header banner buttons (Resume/Contact) */
+header .banner-buttons {
+   margin-top: 6px;
+}
+header .banner-buttons .button {
+   display: inline-block;
+   margin: 0 8px;
+   padding: 10px 26px;
+   border: 1px solid #fff;
+   border-radius: 30px;
+   color: #fff;
+   font: 13px 'opensans-bold', sans-serif;
+   text-transform: uppercase;
+   letter-spacing: 1px;
+   text-decoration: none;
+   background: transparent;
+   transition: all .3s ease-in-out;
+}
+header .banner-buttons .resume-button {
+   border-color: #FF8B00;
+   color: #FF8B00;
+}
+header .banner-buttons .resume-button:hover {
+   background-color: #FF8B00;
+   color: #fff;
+}
+header .banner-buttons .contact-button:hover {
+   background-color: #fff;
+   color: #161415;
+}
+header .banner-buttons .button i { margin-left: 6px; }
 
 /* scrolldown link */
 header .scrolldown a {
@@ -141,6 +181,7 @@ header .scrolldown a:hover { color: #11ABB0; }
    position: fixed;
    left: 0;
    top: 0;
+   background-color: rgba(15, 15, 15, .85);
 }
 .opaque { background-color: #333; }
 

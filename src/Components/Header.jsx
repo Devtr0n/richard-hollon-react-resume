@@ -6,7 +6,6 @@ function Header({ data }) {
 
   const handleScroll = useCallback(() => {
 	const nav = navRef.current;
-	if (!nav) return;
 
 	const headerEl = document.querySelector('header');
 	const headerHeight = headerEl ? headerEl.offsetHeight : 0;
@@ -16,11 +15,6 @@ function Header({ data }) {
 	  nav.style.display = 'none';
 	} else {
 	  nav.style.display = '';
-	  if (y < headerHeight * 0.2) {
-		nav.classList.remove('opaque');
-	  } else {
-		nav.classList.add('opaque');
-	  }
 	}
   }, []);
 
@@ -65,11 +59,12 @@ function Header({ data }) {
 	};
   }, [handleScroll]);
 
-  let name, occupation, description, networks;
+  let name, occupation, description, resumeDownload, networks;
   if (data) {
 	name = data.name;
 	occupation = data.occupation;
 	description = data.description;
+	resumeDownload = data.resumedownload;
 	networks = data.social.map((network) => (
 	  <li key={network.name}><a href={network.url}><i className={network.className}></i></a></li>
 	));
@@ -84,7 +79,6 @@ function Header({ data }) {
 		  <a className="mobile-btn" href="#home" title="Hide navigation">Hide navigation</a>
 
 	   <ul id="nav" className="nav">
-		  <li className="current"><a className="smoothscroll" href="#home" onClick={handleNavClick}>Home</a></li>
 		  <li><a className="smoothscroll" href="#about" onClick={handleNavClick}>About</a></li>
 			 <li><a className="smoothscroll" href="#resume" onClick={handleNavClick}>Resume</a></li>
 		  <li><a className="smoothscroll" href="#portfolio" onClick={handleNavClick}>Works</a></li>
@@ -99,11 +93,15 @@ function Header({ data }) {
 		  <h1 className="responsive-headline">I'm {name}.</h1>
 		  <h3>I'm a New Braunfels, Texas based <span>{occupation}</span>. {description}.</h3>
 		  <hr />
-		  <ul className="social">
-			 {networks}
-		  </ul>
-	   </div>
-	</div>
+			<ul className="social">
+			   {networks}
+			</ul>
+			<div className="banner-buttons">
+			  <a href={resumeDownload} className="button resume-button">Resume <i className="fa fa-download"></i></a>
+			  <a className="button contact-button smoothscroll" href="#contact" onClick={handleNavClick}>Contact</a>
+			</div>
+			 </div>
+		  </div>
 
 	<p className="scrolldown">
 	   <a className="smoothscroll" href="#about" onClick={handleNavClick}><i className="icon-down-circle"></i></a>
