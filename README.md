@@ -73,7 +73,7 @@ GitHub Pages only serves static files, so the contact form posts directly from t
 1. Create a free form at [formspree.io](https://formspree.io/) and copy its endpoint URL (e.g. `https://formspree.io/f/abcdwxyz`).
 2. Set `VITE_FORMSPREE_ENDPOINT` to that URL:
    - Locally: copy `.env.example` to `.env.local` and fill it in.
-   - In CI: add a repository secret named `VITE_FORMSPREE_ENDPOINT` (Settings → Secrets and variables → Actions) — the [deploy workflow](.github/workflows/deploy.yml) passes it into the build.
+   - In CI: add a repository **variable** named `VITE_FORMSPREE_ENDPOINT` (Settings → Secrets and variables → Actions → Variables tab) — the [deploy workflow](.github/workflows/deploy.yml) passes it into the build. It's a variable rather than a secret because the value ends up embedded in the public JS bundle anyway.
 
 If the variable isn't set, the form shows an error asking the visitor to email directly instead of failing silently.
 
