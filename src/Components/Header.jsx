@@ -1,54 +1,116 @@
-import React, { Component } from 'react';
+import React, { useRef, useEffect, useCallback } from 'react';
 
-class Header extends Component {
-  render() {
+function Header({ data }) {
+  const navRef = useRef(null);
+  const sectionObserverRef = useRef(null);
 
-    if(this.props.data){
-      var name = this.props.data.name;
-      var occupation= this.props.data.occupation;
-      var description= this.props.data.description;
-      var networks= this.props.data.social.map(function(network){
-        return <li key={network.name}><a href={network.url}><i className={network.className}></i></a></li>
-      })
-    }
+  const handleScroll = useCallback(() => {
+	const nav = navRef.current;
+	if (!nav) return;
 
-    return (
-      <header id="home">
+	const headerEl = document.querySelector('header');
+	const headerHeight = headerEl ? headerEl.offsetHeight : 0;
+	const y = window.scrollY;
 
-      <nav id="nav-wrap">
+	if (y > headerHeight * 0.2 && y < headerHeight && window.innerWidth > 768) {
+	  nav.style.display = 'none';
+	} else {
+	  nav.style.display = '';
+	  if (y < headerHeight * 0.2) {
+		nav.classList.remove('opaque');
+	  } else {
+		nav.classList.add('opaque');
+	  }
+	}
+  }, []);
 
-         <a className="mobile-btn" href="#nav-wrap" title="Show navigation">Show navigation</a>
-	      <a className="mobile-btn" href="#home" title="Hide navigation">Hide navigation</a>
+  const handleNavClick = useCallback((e) => {
+	const targetId = e.currentTarget.getAttribute('href');
+	if (!targetId || !targetId.startsWith('#')) return;
+	const target = document.querySelector(targetId);
+	if (!target) return;
 
-         <ul id="nav" className="nav">
-            <li className="current"><a className="smoothscroll" href="#home">Home</a></li>
-            <li><a className="smoothscroll" href="#about">About</a></li>
-	         <li><a className="smoothscroll" href="#resume">Resume</a></li>
-            <li><a className="smoothscroll" href="#portfolio">Works</a></li>
-            <li><a className="smoothscroll" href="#testimonials">Testimonials</a></li>
-            <li><a className="smoothscroll" href="#contact">Contact</a></li>
-         </ul>
+	e.preventDefault();
+	target.scrollIntoView({ behavior: 'smooth' });
+	window.history.pushState(null, '', targetId);
+  }, []);
 
-      </nav>
+  useEffect(() => {
+	window.addEventListener('scroll', handleScroll);
 
-      <div className="row banner">
-         <div className="banner-text">
-            <h1 className="responsive-headline">I'm {name}.</h1>
-            <h3>I'm an Austin, Texas based <span>{occupation}</span>. {description}.</h3>
-            <hr />
-            <ul className="social">
-               {networks}
-            </ul>
-         </div>
-      </div>
+	const sections = document.querySelectorAll('section, header#home');
+	if (sections.length && typeof IntersectionObserver !== 'undefined') {
+	  sectionObserverRef.current = new IntersectionObserver(
+		(entries) => {
+		  entries.forEach((entry) => {
+			if (entry.isIntersecting) {
+			  const navLinks = document.querySelectorAll('#nav-wrap a');
+			  navLinks.forEach((link) => link.parentElement.classList.remove('current'));
+			  const activeLink = document.querySelector(`#nav-wrap a[href="#${entry.target.id}"]`);
+			  if (activeLink) activeLink.parentElement.classList.add('current');
+			}
+		  });
+		},
+		{ rootMargin: '-35% 0px -35% 0px' }
+	  );
 
-      <p className="scrolldown">
-         <a className="smoothscroll" href="#about"><i className="icon-down-circle"></i></a>
-      </p>
+	  sections.forEach((section) => sectionObserverRef.current.observe(section));
+	}
 
-   </header>
-    );
+	return () => {
+	  window.removeEventListener('scroll', handleScroll);
+	  if (sectionObserverRef.current) {
+		sectionObserverRef.current.disconnect();
+	  }
+	};
+  }, [handleScroll]);
+
+  let name, occupation, description, networks;
+  if (data) {
+	name = data.name;
+	occupation = data.occupation;
+	description = data.description;
+	networks = data.social.map((network) => (
+	  <li key={network.name}><a href={network.url}><i className={network.className}></i></a></li>
+	));
   }
+
+  return (
+	<header id="home">
+
+	<nav id="nav-wrap" ref={navRef}>
+
+	   <a className="mobile-btn" href="#nav-wrap" title="Show navigation">Show navigation</a>
+		  <a className="mobile-btn" href="#home" title="Hide navigation">Hide navigation</a>
+
+	   <ul id="nav" className="nav">
+		  <li className="current"><a className="smoothscroll" href="#home" onClick={handleNavClick}>Home</a></li>
+		  <li><a className="smoothscroll" href="#about" onClick={handleNavClick}>About</a></li>
+			 <li><a className="smoothscroll" href="#resume" onClick={handleNavClick}>Resume</a></li>
+		  <li><a className="smoothscroll" href="#portfolio" onClick={handleNavClick}>Works</a></li>
+		  <li><a className="smoothscroll" href="#testimonials" onClick={handleNavClick}>Testimonials</a></li>
+		  <li><a className="smoothscroll" href="#contact" onClick={handleNavClick}>Contact</a></li>
+	   </ul>
+
+	</nav>
+
+	<div className="row banner">
+	   <div className="banner-text">
+		  <h1 className="responsive-headline">I'm {name}.</h1>
+		  <h3>I'm a New Braunfels, Texas based <span>{occupation}</span>. {description}.</h3>
+		  <hr />
+		  <ul className="social">
+			 {networks}
+		  </ul>
+	   </div>
+	</div>
+
+	<p className="scrolldown">
+	   <a className="smoothscroll" href="#about" onClick={handleNavClick}><i className="icon-down-circle"></i></a>
+	</p>
+
+ </header>
+  );
 }
 
 export default Header;

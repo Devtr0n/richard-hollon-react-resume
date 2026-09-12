@@ -1,42 +1,42 @@
 {
   "main": {
-    "name":"Richard Hollon",
-    "occupation":"Senior Full Stack .NET Developer",
-    "description":"with over 20 years of relevant experience.",
-    "image":"profilepic.jpg",
-    "bio":"I (Richard Hollon) am a 41 year old software engineer based in Austin, Texas USA. I enjoy programming in the Microsoft stack: C#, PowerShell, JavaScript, ASP.NET MVC, HTML5, jQuery, Linq-to-EF, Web API 2/REST and SQL. I also advocate agile practices, continuous integration and domain driven design.",
-    "bio2":"I am an avid traveller, having most recently visited: Colorado Rocky Mountains, New Orleans (Mardi Gras/Honeymoon), Budapest Hungary, Moscow Russia, Tbilisi Georgia (engagement), Athens Greece and Sochi/Krasnodar Russia. On March 3rd, 2019 I married the woman of my dreams at Mount Bonnell in Austin, Texas USA.",
-    "bio3": "In my free time I enjoy: playing my Martin guitar (a lefty), cooking different recipes (try me), cold-brewing coffee, bicycling Austin's trails and boardwalk, swimming, freshwater fishing, dove hunting, two-steppin' across Texas, editing vacation videos and so much more. This website was re-written in ReactJS during some rare free time (Oct 2019). This website was last updated (July 26th, 2021).",
-    "contactmessage":"Feel free to get in contact with me.",
+    "name": "Richard Hollon",
+    "occupation": "Senior Full Stack .NET Developer",
+    "description": "with over 20 years of relevant experience.",
+    "image": "profilepic.jpg",
+    "bio": "I (Richard Hollon) am a 41 year old software engineer based in New Braunfels, Texas USA. I enjoy programming in the Microsoft stack: C#, PowerShell, Typescript, ASP.NET MVC, HTML5, jQuery, Linq-to-EF, Web API 2/REST and SQL. Vertical Stack, Clean Architecture, SOLID principles, CQRS. I also advocate agile practices, continuous integration and domain driven design.",
+    "bio2": "I am an avid traveller, having most recently visited: Colorado Rocky Mountains, New Orleans (Mardi Gras/Honeymoon), Budapest Hungary, Moscow Russia, Tbilisi Georgia (engagement), Athens Greece and Sochi/Krasnodar Russia. On March 3rd, 2019 I married the woman of my dreams at Mount Bonnell in Austin, Texas USA.",
+    "bio3": "In my free time I enjoy: playing my Martin guitar (a lefty), feeding my hummingbird charm, cooking different recipes (try me), cold-brewing coffee, bicycling the Hill Country, semi-pro pizza crafting, swimming, freshwater fishing, dove hunting, two-steppin' across Texas, editing vacation videos and so much more. This website was re-written in React/Vite (without jQuery) during some rare free time (Sept 2026). This website was last updated (September 11th, 2026).",
+    "contactmessage": "Feel free to get in contact with me.",
     "email": "richardsmailbox@gmail.com",
-    "address":{
-      "street":"1429 Escarpment Rd",
-      "city":"New Braunfels",
-      "state":"Texas",
+    "address": {
+      "street": "1429 Escarpment Rd",
+      "city": "New Braunfels",
+      "state": "Texas",
       "zip": "78132"
     },
     "website": "http://www.richardhollon.com",
-    "resumedownload":"/content/Richard.Hollon.Resume.2021.pdf",
-    "social":[
+    "resumedownload": "/content/Richard.Hollon.Resume.2021.pdf",
+    "social": [
       {
-        "name":"stackoverflow",
-        "url":"https://stackoverflow.com/users/40899/d3vtr0n?tab=profile",
-        "className":"fa fa-stack-overflow"
+        "name": "stackoverflow",
+        "url": "https://stackoverflow.com/users/40899/d3vtr0n?tab=profile",
+        "className": "fa fa-stack-overflow"
       },
       {
-        "name":"linkedin",
-        "url":"https://www.linkedin.com/in/richardhollon/",
-        "className":"fa fa-linkedin"
+        "name": "linkedin",
+        "url": "https://www.linkedin.com/in/richardhollon/",
+        "className": "fa fa-linkedin"
       },
       {
-        "name":"instagram",
-        "url":"http://instagram.com/nekotakacho",
-        "className":"fa fa-instagram"
+        "name": "youtube",
+        "url": "https://youtube.com/@hillcountryhummers",
+        "className": "fa fa-youtube"
       },
       {
-        "name":"github",
-        "url":"http://github.com/Devtr0n",
-        "className":"fa fa-github"
+        "name": "github",
+        "url": "http://github.com/Devtr0n",
+        "className": "fa fa-github"
       }
     ]
   },

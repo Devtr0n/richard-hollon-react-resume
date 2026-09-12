@@ -1,19 +1,18 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-class About extends Component {
-  render() {
+function About({ data }) {
 
-    if(this.props.data){
-      var name = this.props.data.name;
-      var profilepic= "images/"+this.props.data.image;
-      var bio = this.props.data.bio;
-      var street = this.props.data.address.street;
-      var city = this.props.data.address.city;
-      var state = this.props.data.address.state;
-      var zip = this.props.data.address.zip;
-      var phone= this.props.data.phone;
-      var email = this.props.data.email;
-      var resumeDownload = this.props.data.resumedownload;
+    if(data){
+      var name = data.name;
+      var profilepic= "images/"+data.image;
+      var bio = data.bio;
+      var street = data.address.street;
+      var city = data.address.city;
+      var state = data.address.state;
+      var zip = data.address.zip;
+      var phone= data.phone;
+      var email = data.email;
+      var resumeDownload = data.resumedownload;
     }
 
     return (
@@ -49,7 +48,6 @@ class About extends Component {
 
    </section>
     );
-  }
 }
 
 export default About;

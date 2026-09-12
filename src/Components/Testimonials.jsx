@@ -1,10 +1,9 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-class Testimonials extends Component {
-  render() {
+function Testimonials({ data }) {
 
-    if(this.props.data){
-      var testimonials = this.props.data.testimonials.map(function(testimonials){
+    if(data){
+      var testimonials = data.testimonials.map(function(testimonials){
         return  <li key={testimonials.user}>
             <blockquote>
                <p>{testimonials.text}</p>
@@ -32,7 +31,6 @@ class Testimonials extends Component {
          </div>
    </section>
     );
-  }
 }
 
 export default Testimonials;

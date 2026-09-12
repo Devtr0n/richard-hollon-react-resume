@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 import Header from './Components/Header';
 import Footer from './Components/Footer';
@@ -8,16 +8,10 @@ import Contact from './Components/Contact';
 import Testimonials from './Components/Testimonials';
 import Portfolio from './Components/Portfolio';
 
-class App extends Component {
+function App() {
+  const [resumeData, setResumeData] = useState({});
 
-  constructor(props){
-    super(props);
-    this.state = {
-      resumeData: {}
-    };
-  }
-
-  getResumeData(){
+  useEffect(() => {
     fetch('/resumeData.json', { cache: 'no-cache' })
       .then(response => {
         if (!response.ok) {
@@ -25,27 +19,21 @@ class App extends Component {
         }
         return response.json();
       })
-      .then(data => this.setState({ resumeData: data }))
+      .then(data => setResumeData(data))
       .catch(err => console.log(err));
-  }
+  }, []);
 
-  componentDidMount(){
-    this.getResumeData();
-  }
-
-  render() {
-    return (
-      <div className="App">
-        <Header data={this.state.resumeData.main}/>
-        <About data={this.state.resumeData.main}/>
-        <Resume data={this.state.resumeData.resume}/>
-        <Portfolio data={this.state.resumeData.portfolio}/>
-        <Testimonials data={this.state.resumeData.testimonials}/>
-        <Contact data={this.state.resumeData.main}/>
-        <Footer data={this.state.resumeData.main}/>
-      </div>
-    );
-  }
+  return (
+    <div className="App">
+      <Header data={resumeData.main}/>
+      <About data={resumeData.main}/>
+      <Resume data={resumeData.resume}/>
+      <Portfolio data={resumeData.portfolio}/>
+      <Testimonials data={resumeData.testimonials}/>
+      <Contact data={resumeData.main}/>
+      <Footer data={resumeData.main}/>
+    </div>
+  );
 }
 
 export default App;

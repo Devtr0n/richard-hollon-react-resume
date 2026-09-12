@@ -1,47 +1,45 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 
 const FORMSPREE_ENDPOINT = import.meta.env.VITE_FORMSPREE_ENDPOINT;
 
-class Contact extends Component {
-  constructor(props) {
-	super(props);
-	this.state = {
-	  contactName: '',
-	  contactEmail: '',
-	  contactSubject: '',
-	  contactMessage: '',
-	  status: 'idle', // idle | sending | success | error
-	  errorMessage: '',
-	};
+function Contact({ data }) {
+  const [contactName, setContactName] = useState('');
+  const [contactEmail, setContactEmail] = useState('');
+  const [contactSubject, setContactSubject] = useState('');
+  const [contactMessage, setContactMessage] = useState('');
+  const [status, setStatus] = useState('idle'); // idle | sending | success | error
+  const [errorMessage, setErrorMessage] = useState('');
 
-	this.handleChange = this.handleChange.bind(this);
-	this.handleSubmit = this.handleSubmit.bind(this);
-  }
+  const fieldSetters = {
+	contactName: setContactName,
+	contactEmail: setContactEmail,
+	contactSubject: setContactSubject,
+	contactMessage: setContactMessage,
+  };
 
-  handleChange(event) {
+  const handleChange = (event) => {
 	const { name, value } = event.target;
-	this.setState({ [name]: value });
-  }
+	const setter = fieldSetters[name];
+	if (setter) setter(value);
+  };
 
-  async handleSubmit(event) {
+  const handleSubmit = async (event) => {
 	event.preventDefault();
 
-	const { contactName, contactEmail, contactSubject, contactMessage } = this.state;
-
 	if (!contactName || !contactEmail || !contactMessage) {
-	  this.setState({ status: 'error', errorMessage: 'Please fill in your name, email, and message.' });
+	  setStatus('error');
+	  setErrorMessage('Please fill in your name, email, and message.');
 	  return;
 	}
 
 	if (!FORMSPREE_ENDPOINT) {
-	  this.setState({
-		status: 'error',
-		errorMessage: 'Contact form is not configured. Please email me directly instead.',
-	  });
+	  setStatus('error');
+	  setErrorMessage('Contact form is not configured. Please email me directly instead.');
 	  return;
 	}
 
-	this.setState({ status: 'sending', errorMessage: '' });
+	setStatus('sending');
+	setErrorMessage('');
 
 	try {
 	  const response = await fetch(FORMSPREE_ENDPOINT, {
@@ -56,36 +54,32 @@ class Contact extends Component {
 	  });
 
 	  if (response.ok) {
-		this.setState({
-		  status: 'success',
-		  contactName: '',
-		  contactEmail: '',
-		  contactSubject: '',
-		  contactMessage: '',
-		});
+		setStatus('success');
+		setContactName('');
+		setContactEmail('');
+		setContactSubject('');
+		setContactMessage('');
 	  } else {
 		const data = await response.json().catch(() => null);
 		const message = data?.errors?.map((e) => e.message).join(', ') || 'Something went wrong sending your message.';
-		this.setState({ status: 'error', errorMessage: message });
+		setStatus('error');
+		setErrorMessage(message);
 	  }
 	} catch (error) {
-	  this.setState({ status: 'error', errorMessage: 'Network error. Please try again later.' });
+	  setStatus('error');
+	  setErrorMessage('Network error. Please try again later.');
 	}
-  }
+  };
 
-  render() {
-
-	if(this.props.data){
-	  var name = this.props.data.name;
-	  var street = this.props.data.address.street;
-	  var city = this.props.data.address.city;
-	  var state = this.props.data.address.state;
-	  var zip = this.props.data.address.zip;
-	  var phone= this.props.data.phone;
-	  var message = this.props.data.contactmessage;
+  if(data){
+	  var name = data.name;
+	  var street = data.address.street;
+	  var city = data.address.city;
+	  var state = data.address.state;
+	  var zip = data.address.zip;
+	  var phone= data.phone;
+	  var message = data.contactmessage;
 	}
-
-	const { contactName, contactEmail, contactSubject, contactMessage, status, errorMessage } = this.state;
 
 	return (
 	  <section id="contact">
@@ -109,27 +103,27 @@ class Contact extends Component {
 		 <div className="row">
 			<div className="eight columns">
 
-			   <form onSubmit={this.handleSubmit} id="contactForm" name="contactForm">
+			   <form onSubmit={handleSubmit} id="contactForm" name="contactForm">
 					<fieldset>
 
 				  <div>
 						   <label htmlFor="contactName">Name <span className="required">*</span></label>
-						   <input type="text" value={contactName} size="35" id="contactName" name="contactName" onChange={this.handleChange} disabled={status === 'sending'}/>
+						   <input type="text" value={contactName} size="35" id="contactName" name="contactName" onChange={handleChange} disabled={status === 'sending'}/>
 				  </div>
 
 				  <div>
 						   <label htmlFor="contactEmail">Email <span className="required">*</span></label>
-						   <input type="text" value={contactEmail} size="35" id="contactEmail" name="contactEmail" onChange={this.handleChange} disabled={status === 'sending'}/>
+						   <input type="text" value={contactEmail} size="35" id="contactEmail" name="contactEmail" onChange={handleChange} disabled={status === 'sending'}/>
 				  </div>
 
 				  <div>
 						   <label htmlFor="contactSubject">Subject</label>
-						   <input type="text" value={contactSubject} size="35" id="contactSubject" name="contactSubject" onChange={this.handleChange} disabled={status === 'sending'}/>
+						   <input type="text" value={contactSubject} size="35" id="contactSubject" name="contactSubject" onChange={handleChange} disabled={status === 'sending'}/>
 				  </div>
 
 				  <div>
 					 <label htmlFor="contactMessage">Message <span className="required">*</span></label>
-					 <textarea cols="50" rows="15" id="contactMessage" name="contactMessage" value={contactMessage} onChange={this.handleChange} disabled={status === 'sending'}></textarea>
+					 <textarea cols="50" rows="15" id="contactMessage" name="contactMessage" value={contactMessage} onChange={handleChange} disabled={status === 'sending'}></textarea>
 				  </div>
 
 				  <div>
@@ -169,7 +163,6 @@ class Contact extends Component {
 		 </div>
 	  </section>
 	);
-  }
 }
 
 export default Contact;
