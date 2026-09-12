@@ -26,6 +26,8 @@ jobs:
         run: npm ci
 
       - name: Run tests with coverage
+        env:
+          VITE_FORMSPREE_ENDPOINT: ${{ vars.VITE_FORMSPREE_ENDPOINT }}
         run: npm run test:coverage
 
       - name: Upload coverage to Codecov

@@ -72,12 +72,6 @@ function Contact({ data }) {
   };
 
   if(data){
-	  var name = data.name;
-	  var street = data.address.street;
-	  var city = data.address.city;
-	  var state = data.address.state;
-	  var zip = data.address.zip;
-	  var phone= data.phone;
 	  var message = data.contactmessage;
 	}
 
@@ -101,7 +95,7 @@ function Contact({ data }) {
 		 </div>
 
 		 <div className="row">
-			<div className="eight columns">
+			<div className="twelve columns">
 
 			   <form onSubmit={handleSubmit} id="contactForm" name="contactForm">
 					<fieldset>
@@ -147,19 +141,6 @@ function Contact({ data }) {
 			   }
 
 				</div>
-
-				<aside className="four columns footer-widgets">
-			   <div className="widget widget_contact">
-
-					   <h4>Address and Phone</h4>
-					   <p className="address">
-						   {name}<br />
-						   {street} <br />
-						   {city}, {state} {zip}<br />
-						   <span>{phone}</span>
-					   </p>
-				   </div>
-			</aside>
 		 </div>
 	  </section>
 	);

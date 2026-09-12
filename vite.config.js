@@ -16,6 +16,9 @@ export default defineConfig({
     globals: true,
     environment: 'jsdom',
     setupFiles: './src/setupTests.js',
+    env: {
+      VITE_FORMSPREE_ENDPOINT: 'https://formspree.io/f/test',
+    },
     coverage: {
       provider: 'v8',
       reporter: ['text', 'html', 'lcov'],
