@@ -30,7 +30,7 @@ body { background: #0f0f0f; }
 
 header {
    position: relative;
-   height: 800px;
+   height: 100vh;
    min-height: 500px;
    width: 100%;
    background: #161415 url(../images/header-background.jpg) no-repeat top center;
@@ -58,7 +58,9 @@ header .banner {
 
 header .banner-text { width: 100%; }
 header .banner-text h1 {
-   font: 90px/1.1em 'opensans-bold', sans-serif;
+   font-family: 'opensans-bold', sans-serif;
+   font-size: clamp(40px, 8vw, 90px);
+   line-height: 1.1em;
    color: #fff;
    letter-spacing: -2px;
    margin: 0 auto 18px auto;
