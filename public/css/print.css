@@ -1,0 +1,73 @@
+/* Print stylesheet: keep the resume readable on paper, hide chrome that
+   only makes sense on-screen (nav, banner background, social icons, forms). */
+@media print {
+
+  a.skip-link {
+    display: none !important;
+  }
+
+  body {
+    background: #fff !important;
+    color: #000 !important;
+    font-size: 12pt;
+  }
+
+  header,
+  #nav,
+  header .social,
+  header .banner-buttons,
+  header .scrolldown,
+  #go-top,
+  #contact,
+  footer {
+    display: none !important;
+  }
+
+  #about,
+  #resume,
+  #portfolio,
+  #testimonials {
+    display: block !important;
+    width: 100% !important;
+    padding: 0.5in 0 !important;
+    margin: 0 !important;
+    background: #fff !important;
+    color: #000 !important;
+    page-break-inside: avoid;
+  }
+
+  #about .row,
+  #resume .row,
+  #portfolio .row,
+  #testimonials .row {
+    display: block !important;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    color: #000 !important;
+  }
+
+  a {
+    color: #000 !important;
+    text-decoration: underline;
+  }
+
+  a[href^="http"]::after {
+    content: " (" attr(href) ")";
+    font-size: 9pt;
+    font-weight: normal;
+  }
+
+  .flexslider,
+  .flex-control-nav,
+  .flex-direction-nav,
+  #portfolio .portfolio-item .overlay,
+  #about .download .button {
+    display: none !important;
+  }
+
+  * {
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+}

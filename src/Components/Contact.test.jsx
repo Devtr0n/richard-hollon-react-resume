@@ -31,6 +31,21 @@ describe('Contact', () => {
     expect(global.fetch).not.toHaveBeenCalled();
   });
 
+  it('shows a validation error when the email address is not valid', async () => {
+    render(<Contact data={data} />);
+    const user = userEvent.setup();
+
+    await user.type(screen.getByLabelText(/name/i), 'Jane Doe');
+    await user.type(screen.getByLabelText(/email/i), 'not-an-email');
+    await user.type(screen.getByLabelText(/message/i), 'Hello there!');
+    await user.click(screen.getByRole('button', { name: /submit/i }));
+
+    expect(
+      await screen.findByText(/please enter a valid email address/i)
+    ).toBeInTheDocument();
+    expect(global.fetch).not.toHaveBeenCalled();
+  });
+
   it('submits the form via fetch (Formspree) without jQuery ajax', async () => {
     global.fetch.mockResolvedValueOnce({ ok: true, json: async () => ({}) });
 

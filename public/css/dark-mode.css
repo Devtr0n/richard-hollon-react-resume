@@ -1,0 +1,31 @@
+/* Dark mode: most sections (#about, #testimonials, #contact, footer) are
+   already dark by design. Only the light sections (body default, #resume,
+   #portfolio) need overrides so the whole page matches an OS-level dark
+   preference. Colors reuse the site's existing dark palette. */
+@media (prefers-color-scheme: dark) {
+
+  body {
+    background: #191919;
+    color: #b7b7b7;
+  }
+
+  #resume {
+    background: #232323;
+  }
+  #resume h1, #resume h2, #resume h3, #resume h4, #resume h5, #resume h6 {
+    color: #f2f2f2;
+  }
+  #resume a, #resume a:visited { color: #11ABB0; }
+  #resume a:hover, #resume a:focus { color: #fff; }
+
+  #portfolio {
+    background: #232323;
+  }
+  #portfolio h1, #portfolio h2, #portfolio h3 {
+    color: #f2f2f2;
+  }
+
+  #go-top a {
+    background-color: #0F9095;
+  }
+}

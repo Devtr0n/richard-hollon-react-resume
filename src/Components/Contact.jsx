@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
 const FORMSPREE_ENDPOINT = import.meta.env.VITE_FORMSPREE_ENDPOINT;
+const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 function Contact({ data }) {
   const [contactName, setContactName] = useState('');
@@ -30,6 +31,12 @@ function Contact({ data }) {
 	if (!contactName || !contactEmail || !contactMessage) {
 	  setStatus('error');
 	  setErrorMessage('Please fill in your name, email, and message.');
+	  return;
+	}
+
+	if (!EMAIL_REGEX.test(contactEmail)) {
+	  setStatus('error');
+	  setErrorMessage('Please enter a valid email address.');
 	  return;
 	}
 
@@ -98,7 +105,7 @@ function Contact({ data }) {
 		 <div className="row">
 			<div className="twelve columns">
 
-			   <form onSubmit={handleSubmit} id="contactForm" name="contactForm">
+			   <form onSubmit={handleSubmit} id="contactForm" name="contactForm" noValidate>
 					<fieldset>
 
 				  <div>
@@ -108,7 +115,7 @@ function Contact({ data }) {
 
 				  <div>
 						   <label htmlFor="contactEmail">Email <span className="required">*</span></label>
-						   <input type="text" value={contactEmail} size="35" id="contactEmail" name="contactEmail" onChange={handleChange} disabled={status === 'sending'}/>
+						   <input type="email" value={contactEmail} size="35" id="contactEmail" name="contactEmail" onChange={handleChange} disabled={status === 'sending'}/>
 				  </div>
 
 				  <div>
