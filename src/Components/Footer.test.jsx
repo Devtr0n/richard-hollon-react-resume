@@ -17,6 +17,10 @@ describe('Footer', () => {
     expect(links).toHaveLength(data.social.length);
     expect(links[0]).toHaveAttribute('href', data.social[0].url);
     expect(links[1]).toHaveAttribute('href', data.social[1].url);
+    links.forEach((link) => {
+      expect(link).toHaveAttribute('target', '_blank');
+      expect(link).toHaveAttribute('rel', 'noopener noreferrer');
+    });
   });
 
   it('scrolls back to top without jQuery when clicked', async () => {

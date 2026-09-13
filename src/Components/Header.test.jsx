@@ -43,6 +43,8 @@ describe('Header', () => {
     const { container } = render(<Header data={data} />);
     const link = container.querySelector('.social a');
     expect(link).toHaveAttribute('href', data.social[0].url);
+    expect(link).toHaveAttribute('target', '_blank');
+    expect(link).toHaveAttribute('rel', 'noopener noreferrer');
   });
 
   it('does not intercept clicks on non-hash hrefs', async () => {

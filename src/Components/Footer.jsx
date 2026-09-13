@@ -10,7 +10,7 @@ function Footer({ data }) {
   let networks;
   if (data) {
     networks = data.social.map((network) => (
-      <li key={network.name}><a href={network.url}><i className={network.className}></i></a></li>
+      <li key={network.name}><a href={network.url} target="_blank" rel="noopener noreferrer"><i className={network.className}></i></a></li>
     ));
   }
 
