@@ -25,6 +25,7 @@ function App() {
 
   return (
     <div className="App">
+      <a className="skip-link" href="#about">Skip to main content</a>
       <Header data={resumeData.main}/>
       <About data={resumeData.main}/>
       <Resume data={resumeData.resume}/>

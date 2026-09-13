@@ -16,6 +16,7 @@ describe('Footer', () => {
     const links = container.querySelectorAll('.social-links a');
     expect(links).toHaveLength(data.social.length);
     expect(links[0]).toHaveAttribute('href', data.social[0].url);
+    expect(links[0]).toHaveAttribute('aria-label', data.social[0].name);
     expect(links[1]).toHaveAttribute('href', data.social[1].url);
     links.forEach((link) => {
       expect(link).toHaveAttribute('target', '_blank');

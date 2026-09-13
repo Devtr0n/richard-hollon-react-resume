@@ -65,7 +65,7 @@ function Contact({ data }) {
 		setStatus('error');
 		setErrorMessage(message);
 	  }
-	} catch (error) {
+	} catch {
 	  setStatus('error');
 	  setErrorMessage('Network error. Please try again later.');
 	}

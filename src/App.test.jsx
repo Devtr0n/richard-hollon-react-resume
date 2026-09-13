@@ -18,6 +18,13 @@ describe('App', () => {
     render(<App />, { container: div });
   });
 
+  it('renders a skip link targeting the main content', () => {
+    global.fetch.mockResolvedValueOnce({ ok: true, json: async () => ({}) });
+    render(<App />);
+    const skipLink = screen.getByText('Skip to main content');
+    expect(skipLink).toHaveAttribute('href', '#about');
+  });
+
   it('renders section content once resumeData.json loads successfully', async () => {
     global.fetch.mockResolvedValueOnce({
       ok: true,

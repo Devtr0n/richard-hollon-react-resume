@@ -45,6 +45,7 @@ describe('Header', () => {
     expect(link).toHaveAttribute('href', data.social[0].url);
     expect(link).toHaveAttribute('target', '_blank');
     expect(link).toHaveAttribute('rel', 'noopener noreferrer');
+    expect(link).toHaveAttribute('aria-label', data.social[0].name);
   });
 
   it('does not intercept clicks on non-hash hrefs', async () => {
