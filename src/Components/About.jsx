@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 function About({ data }) {
 
@@ -54,5 +55,22 @@ function About({ data }) {
    </section>
     );
 }
+
+About.propTypes = {
+  data: PropTypes.shape({
+    image: PropTypes.string,
+    bio: PropTypes.string,
+    address: PropTypes.shape({
+      city: PropTypes.string,
+      state: PropTypes.string,
+    }),
+    phone: PropTypes.string,
+    email: PropTypes.string,
+    study: PropTypes.string,
+    interests: PropTypes.string,
+    employment: PropTypes.string,
+    resumedownload: PropTypes.string,
+  }),
+};
 
 export default About;

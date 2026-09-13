@@ -1,4 +1,5 @@
 import React, { useRef, useEffect, useCallback } from 'react';
+import PropTypes from 'prop-types';
 
 function Header({ data }) {
   const navRef = useRef(null);
@@ -110,5 +111,21 @@ function Header({ data }) {
  </header>
   );
 }
+
+Header.propTypes = {
+  data: PropTypes.shape({
+    name: PropTypes.string,
+    occupation: PropTypes.string,
+    description: PropTypes.string,
+    resumedownload: PropTypes.string,
+    social: PropTypes.arrayOf(
+      PropTypes.shape({
+        name: PropTypes.string.isRequired,
+        url: PropTypes.string.isRequired,
+        className: PropTypes.string,
+      })
+    ),
+  }),
+};
 
 export default Header;

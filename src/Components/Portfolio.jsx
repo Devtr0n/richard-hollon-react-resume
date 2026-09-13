@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 function Portfolio({ data }) {
 
@@ -39,5 +40,18 @@ function Portfolio({ data }) {
    </section>
     );
 }
+
+Portfolio.propTypes = {
+  data: PropTypes.shape({
+    projects: PropTypes.arrayOf(
+      PropTypes.shape({
+        title: PropTypes.string.isRequired,
+        category: PropTypes.string,
+        image: PropTypes.string,
+        url: PropTypes.string,
+      })
+    ),
+  }),
+};
 
 export default Portfolio;

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 function Resume({ data }) {
 
@@ -73,5 +74,33 @@ function Resume({ data }) {
    </section>
     );
 }
+
+Resume.propTypes = {
+  data: PropTypes.shape({
+    skillmessage: PropTypes.string,
+    education: PropTypes.arrayOf(
+      PropTypes.shape({
+        school: PropTypes.string.isRequired,
+        degree: PropTypes.string,
+        graduated: PropTypes.string,
+        description: PropTypes.string,
+      })
+    ),
+    work: PropTypes.arrayOf(
+      PropTypes.shape({
+        company: PropTypes.string.isRequired,
+        title: PropTypes.string,
+        years: PropTypes.string,
+        description: PropTypes.string,
+      })
+    ),
+    skills: PropTypes.arrayOf(
+      PropTypes.shape({
+        name: PropTypes.string.isRequired,
+        level: PropTypes.string,
+      })
+    ),
+  }),
+};
 
 export default Resume;

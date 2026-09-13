@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 
 const FORMSPREE_ENDPOINT = import.meta.env.VITE_FORMSPREE_ENDPOINT;
 
@@ -60,8 +61,8 @@ function Contact({ data }) {
 		setContactSubject('');
 		setContactMessage('');
 	  } else {
-		const data = await response.json().catch(() => null);
-		const message = data?.errors?.map((e) => e.message).join(', ') || 'Something went wrong sending your message.';
+		const responseBody = await response.json().catch(() => null);
+		const message = responseBody?.errors?.map((e) => e.message).join(', ') || 'Something went wrong sending your message.';
 		setStatus('error');
 		setErrorMessage(message);
 	  }
@@ -145,5 +146,11 @@ function Contact({ data }) {
 	  </section>
 	);
 }
+
+Contact.propTypes = {
+  data: PropTypes.shape({
+    contactmessage: PropTypes.string,
+  }),
+};
 
 export default Contact;

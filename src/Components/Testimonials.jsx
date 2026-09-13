@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 function Testimonials({ data }) {
 
@@ -32,5 +33,16 @@ function Testimonials({ data }) {
    </section>
     );
 }
+
+Testimonials.propTypes = {
+  data: PropTypes.shape({
+    testimonials: PropTypes.arrayOf(
+      PropTypes.shape({
+        text: PropTypes.string.isRequired,
+        user: PropTypes.string.isRequired,
+      })
+    ),
+  }),
+};
 
 export default Testimonials;

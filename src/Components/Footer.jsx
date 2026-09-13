@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 function Footer({ data }) {
   const handleBackToTop = (e) => {
@@ -34,5 +35,17 @@ function Footer({ data }) {
 </footer>
   );
 }
+
+Footer.propTypes = {
+  data: PropTypes.shape({
+    social: PropTypes.arrayOf(
+      PropTypes.shape({
+        name: PropTypes.string.isRequired,
+        url: PropTypes.string.isRequired,
+        className: PropTypes.string,
+      })
+    ),
+  }),
+};
 
 export default Footer;

@@ -1,6 +1,6 @@
 import React from 'react';
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
-import { render, screen } from '@testing-library/react';
+import { render, screen, act } from '@testing-library/react';
 import App from './App';
 
 describe('App', () => {
@@ -12,17 +12,23 @@ describe('App', () => {
     vi.restoreAllMocks();
   });
 
-  it('renders without crashing', () => {
+  it('renders without crashing', async () => {
     global.fetch.mockResolvedValueOnce({ ok: true, json: async () => ({}) });
     const div = document.createElement('div');
     render(<App />, { container: div });
+    await act(async () => {
+      await Promise.resolve();
+    });
   });
 
-  it('renders a skip link targeting the main content', () => {
+  it('renders a skip link targeting the main content', async () => {
     global.fetch.mockResolvedValueOnce({ ok: true, json: async () => ({}) });
     render(<App />);
     const skipLink = screen.getByText('Skip to main content');
     expect(skipLink).toHaveAttribute('href', '#about');
+    await act(async () => {
+      await Promise.resolve();
+    });
   });
 
   it('renders section content once resumeData.json loads successfully', async () => {
