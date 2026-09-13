@@ -58,6 +58,12 @@ Run the test suite with code coverage (writes an HTML report to `coverage/index.
 npm run test:coverage
 ```
 
+Run the end-to-end test suite (Playwright, real Chromium browser). This builds the site, serves it locally, and exercises real CSS cascade/rendering — the kind of bug (e.g. a `display: none` hiding the contact form's status message) that unit tests running in jsdom can't catch. The first run downloads a Chromium binary, which may be blocked on locked-down corporate networks; it always works in the CI pipeline.
+```
+npx playwright install --with-deps chromium   # first time only
+npm run test:e2e
+```
+
 Run ESLint:
 ```
 npm run lint
@@ -75,7 +81,7 @@ npm run preview
 
 ## Deployment
 
-Deployment is fully automated: every push to `master` triggers the [GitHub Actions workflow](.github/workflows/deploy.yml), which lints, tests (with coverage), builds the site, and publishes it directly to GitHub Pages using the official `actions/upload-pages-artifact` + `actions/deploy-pages` actions — no intermediate `gh-pages` branch involved.
+Deployment is fully automated: every push to `master` triggers the [GitHub Actions workflow](.github/workflows/deploy.yml), which lints, runs unit tests (with coverage) and Playwright end-to-end tests in parallel jobs, builds the site, and publishes it directly to GitHub Pages using the official `actions/upload-pages-artifact` + `actions/deploy-pages` actions — no intermediate `gh-pages` branch involved. The deploy job only runs once both the build and e2e jobs succeed.
 
 This requires the repo's **Settings → Pages → Build and deployment → Source** to be set to **"GitHub Actions"** (rather than "Deploy from a branch").
 
