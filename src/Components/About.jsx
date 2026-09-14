@@ -5,6 +5,7 @@ function About({ data }) {
 
     if(data){
       var profilepic= "images/"+data.image;
+      var profilepicWebp = profilepic.replace(/\.(jpe?g|png)$/i, '.webp');
       var bio = data.bio;
       var city = data.address.city;
       var state = data.address.state;
@@ -20,7 +21,10 @@ function About({ data }) {
       <section id="about">
       <div className="row">
          <div className="three columns">
-            <img className="profile-pic"  src={profilepic} alt="Richard Hollon Profile Pic" />
+            <picture>
+               <source srcSet={profilepicWebp} type="image/webp" />
+               <img className="profile-pic" src={profilepic} alt="Richard Hollon Profile Pic" />
+            </picture>
          </div>
          <div className="nine columns main-col">
             <h2>About Me</h2>

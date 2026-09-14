@@ -34,6 +34,10 @@ header {
    min-height: 500px;
    width: 100%;
    background: #161415 url(../images/header-background.jpg) no-repeat center bottom;
+   background-image: -webkit-image-set(url(../images/header-background.webp) 1x, url(../images/header-background.jpg) 1x);
+   background-image: image-set(url(../images/header-background.webp) 1x, url(../images/header-background.jpg) 1x);
+   background-repeat: no-repeat;
+   background-position: center bottom;
    background-size: cover !important;
    text-align: center;
    overflow: hidden;
@@ -519,6 +523,9 @@ ul#nav li.current a { color: #F06000; }
 	transition: opacity 0.3s ease-in-out;
 
    background: url(../images/overlay-bg.png) repeat;
+   background-image: -webkit-image-set(url(../images/overlay-bg.webp) 1x, url(../images/overlay-bg.png) 1x);
+   background-image: image-set(url(../images/overlay-bg.webp) 1x, url(../images/overlay-bg.png) 1x);
+   background-repeat: repeat;
 }
 .portfolio-item .item-wrap .link-icon {
    display: block;
@@ -690,6 +697,10 @@ call-to-action .button {
 
 #testimonials {
    background: #1F1F1F url(../images/testimonials-bg.jpg) no-repeat center center;
+   background-image: -webkit-image-set(url(../images/testimonials-bg.webp) 1x, url(../images/testimonials-bg.jpg) 1x);
+   background-image: image-set(url(../images/testimonials-bg.webp) 1x, url(../images/testimonials-bg.jpg) 1x);
+   background-repeat: no-repeat;
+   background-position: center center;
    background-size: cover !important;
    background-attachment: fixed;
 

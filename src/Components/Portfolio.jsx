@@ -6,10 +6,14 @@ function Portfolio({ data }) {
     if(data){
       var projects = data.projects.map(function(projects){
         var projectImage = 'images/portfolio/'+projects.image;
+        var projectImageWebp = projectImage.replace(/\.(jpe?g|png)$/i, '.webp');
         return <div key={projects.title} className="columns portfolio-item">
            <div className="item-wrap">
             <a href={projects.url} title={projects.title}>
-               <img alt={projects.title} src={projectImage} />
+               <picture>
+                  <source srcSet={projectImageWebp} type="image/webp" />
+                  <img alt={projects.title} src={projectImage} />
+               </picture>
                <div className="overlay">
                   <div className="portfolio-item-meta">
                  <h5>{projects.title}</h5>
