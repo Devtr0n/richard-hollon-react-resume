@@ -1035,6 +1035,7 @@ footer .social-links li {
 }
 
 footer .social-links li:first-child { margin-left: 0; }
+footer .social-links li a:hover, footer .social-links li a:focus { color: #F06000; }
 
 /* Go To Top Button */
 #go-top {
