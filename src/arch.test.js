@@ -129,6 +129,27 @@ describe('Architecture: no inline style props', () => {
   });
 });
 
+describe('Architecture: caching strategy', () => {
+  // GitHub Pages serves this site with no way to set custom Cache-Control
+  // headers, so the only levers available are (1) content-hashed filenames
+  // for JS/CSS, which Vite does by default, and (2) a manual version query
+  // param on unhashed static assets like the resume PDF.
+  it('does not override Vite\'s default content-hashed output filenames', () => {
+    const viteConfig = readFileSync(join(process.cwd(), 'vite.config.js'), 'utf-8');
+    const fileNamePatterns = viteConfig.match(/(entryFileNames|assetFileNames|chunkFileNames)\s*:\s*[`'"][^`'"]*[`'"]/g) || [];
+    for (const pattern of fileNamePatterns) {
+      expect(pattern).toMatch(/\[hash\]/);
+    }
+  });
+
+  it('cache-busts the unhashed resume PDF link in resumeData.json with a ?v= param', () => {
+    const resumeData = JSON.parse(
+      readFileSync(join(process.cwd(), 'public', 'resumeData.json'), 'utf-8')
+    );
+    expect(resumeData.main.resumedownload).toMatch(/\.pdf\?v=\d+$/);
+  });
+});
+
 describe('Architecture: arch tests run outside the coverage suite', () => {
   const pkg = JSON.parse(readFileSync(join(process.cwd(), 'package.json'), 'utf-8'));
 

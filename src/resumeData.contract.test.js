@@ -26,6 +26,13 @@ describe('resumeData.json contract', () => {
     expect(resumeData.main.address).toHaveProperty('zip');
   });
 
+  it('cache-busts the resume PDF download link with a ?v= version query param', () => {
+    // The PDF is served unhashed from public/content, and GitHub Pages does
+    // not allow custom Cache-Control headers, so a version query param is the
+    // only lever to force browsers/CDNs to fetch a fresh copy after an edit.
+    expect(resumeData.main.resumedownload).toMatch(/\.pdf\?v=\d+$/);
+  });
+
   it('has a social array with name, url, and className for every entry', () => {
     expect(Array.isArray(resumeData.main.social)).toBe(true);
     expect(resumeData.main.social.length).toBeGreaterThan(0);
