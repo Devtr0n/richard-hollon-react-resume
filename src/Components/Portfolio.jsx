@@ -9,7 +9,7 @@ function Portfolio({ data }) {
         var projectImageWebp = projectImage.replace(/\.(jpe?g|png)$/i, '.webp');
         return <div key={projects.title} className="columns portfolio-item">
            <div className="item-wrap">
-            <a href={projects.url} title={projects.title}>
+            <a href={projects.url} title={projects.title} target="_blank" rel="noopener noreferrer">
                <picture>
                   <source srcSet={projectImageWebp} type="image/webp" />
                   <img alt={projects.title} src={projectImage} loading="lazy" />

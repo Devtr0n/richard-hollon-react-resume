@@ -28,6 +28,15 @@ describe('Portfolio', () => {
     });
   });
 
+  it('opens each project link in a new tab safely', () => {
+    render(<Portfolio data={data} />);
+    data.projects.forEach((project) => {
+      const link = screen.getByTitle(project.title);
+      expect(link).toHaveAttribute('target', '_blank');
+      expect(link).toHaveAttribute('rel', 'noopener noreferrer');
+    });
+  });
+
   it('renders the project title and category', () => {
     render(<Portfolio data={data} />);
     data.projects.forEach((project) => {
