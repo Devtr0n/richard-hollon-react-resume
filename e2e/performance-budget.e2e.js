@@ -51,7 +51,11 @@ test.describe('Performance budgets', () => {
     expect(timing.loadEvent).toBeLessThan(5000);
   });
 
-  test('largest contentful paint is within budget', async ({ page }) => {
+  test('largest contentful paint is within budget', async ({ page, browserName }) => {
+    // The Largest Contentful Paint API is Chromium-only; Firefox and WebKit
+    // don't implement the PerformanceObserver entry type, so skip there.
+    test.skip(browserName !== 'chromium', 'LCP is only observable in Chromium');
+
     await page.goto('/');
     await expect(page.locator('#about')).toBeVisible();
 
