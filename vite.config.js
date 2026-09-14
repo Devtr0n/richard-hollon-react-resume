@@ -15,6 +15,7 @@ export default defineConfig({
   test: {
     globals: true,
     environment: 'jsdom',
+    pool: 'forks',
     setupFiles: './src/setupTests.js',
     exclude: ['**/node_modules/**', '**/e2e/**', '**/dist/**', '**/build/**', '**/.{idea,git,cache,output,temp}/**'],
     reporters: ['verbose'],
