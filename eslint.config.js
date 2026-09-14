@@ -38,6 +38,7 @@ export default [
       ...jsxA11y.configs.recommended.rules,
       'react/no-unescaped-entities': 'off',
       'no-unused-vars': ['error', { varsIgnorePattern: '^React$' }],
+      'no-console': ['error', { allow: ['warn', 'error'] }],
     },
   },
   {

@@ -53,7 +53,7 @@ describe('App', () => {
   });
 
   it('logs an error and does not crash when the fetch response is not ok', async () => {
-    const consoleSpy = vi.spyOn(console, 'log').mockImplementation(() => {});
+    const consoleSpy = vi.spyOn(console, 'error').mockImplementation(() => {});
     global.fetch.mockResolvedValueOnce({ ok: false, status: 500 });
 
     render(<App />);
@@ -63,7 +63,7 @@ describe('App', () => {
   });
 
   it('logs an error and does not crash when the fetch call rejects', async () => {
-    const consoleSpy = vi.spyOn(console, 'log').mockImplementation(() => {});
+    const consoleSpy = vi.spyOn(console, 'error').mockImplementation(() => {});
     global.fetch.mockRejectedValueOnce(new Error('network down'));
 
     render(<App />);
