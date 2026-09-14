@@ -128,3 +128,33 @@ describe('Architecture: no inline style props', () => {
     }
   });
 });
+
+describe('Architecture: arch tests run outside the coverage suite', () => {
+  const pkg = JSON.parse(readFileSync(join(process.cwd(), 'package.json'), 'utf-8'));
+
+  it('has a dedicated test:arch script that runs only src/arch.test.js', () => {
+    expect(pkg.scripts).toHaveProperty('test:arch');
+    expect(pkg.scripts['test:arch']).toMatch(/\bvitest\b.*\brun\b/);
+    expect(pkg.scripts['test:arch']).toContain('src/arch.test.js');
+  });
+
+  it('excludes src/arch.test.js from the coverage script', () => {
+    expect(pkg.scripts).toHaveProperty('test:coverage');
+    const coverageScript = pkg.scripts['test:coverage'];
+    expect(coverageScript).toMatch(/--coverage\b/);
+    expect(coverageScript).toMatch(/--exclude[= ]["']?src\/arch\.test\.js["']?/);
+  });
+
+  it('runs architecture tests as their own step, separate from the coverage step, in the CI workflow', () => {
+    const workflow = readFileSync(
+      join(process.cwd(), '.github', 'workflows', 'deploy.yml'),
+      'utf-8'
+    );
+    const archStepIndex = workflow.indexOf('npm run test:arch');
+    const coverageStepIndex = workflow.indexOf('npm run test:coverage');
+
+    expect(archStepIndex).toBeGreaterThan(-1);
+    expect(coverageStepIndex).toBeGreaterThan(-1);
+    expect(archStepIndex).toBeLessThan(coverageStepIndex);
+  });
+});
