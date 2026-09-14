@@ -14,7 +14,8 @@
     "build": "vite build",
     "preview": "vite preview",
     "test": "vitest",
-    "test:coverage": "vitest run --coverage",
+    "test:arch": "vitest run src/arch.test.js",
+    "test:coverage": "vitest run --coverage --exclude \"src/arch.test.js\"",
     "test:e2e": "playwright test",
     "lint": "eslint ."
   },
