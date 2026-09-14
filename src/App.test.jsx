@@ -52,22 +52,23 @@ describe('App', () => {
     ).toBeInTheDocument();
   });
 
-  it('logs an error and does not crash when the fetch response is not ok', async () => {
+  it('shows a visible error message and does not crash when the fetch response is not ok', async () => {
     const consoleSpy = vi.spyOn(console, 'error').mockImplementation(() => {});
     global.fetch.mockResolvedValueOnce({ ok: false, status: 500 });
 
     render(<App />);
 
-    await vi.waitFor(() => expect(consoleSpy).toHaveBeenCalled());
+    expect(await screen.findByRole('alert')).toHaveTextContent(/something went wrong/i);
     expect(consoleSpy.mock.calls[0][0]).toBeInstanceOf(Error);
   });
 
-  it('logs an error and does not crash when the fetch call rejects', async () => {
+  it('shows a visible error message and does not crash when the fetch call rejects', async () => {
     const consoleSpy = vi.spyOn(console, 'error').mockImplementation(() => {});
     global.fetch.mockRejectedValueOnce(new Error('network down'));
 
     render(<App />);
 
-    await vi.waitFor(() => expect(consoleSpy).toHaveBeenCalledWith(expect.any(Error)));
+    expect(await screen.findByRole('alert')).toHaveTextContent(/something went wrong/i);
+    expect(consoleSpy).toHaveBeenCalledWith(expect.any(Error));
   });
 });

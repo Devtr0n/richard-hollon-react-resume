@@ -14,3 +14,15 @@
   left: 8px;
   top: 8px;
 }
+
+.load-error {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  text-align: center;
+  color: #fff;
+  background: #2B2B2B;
+  font: 17px/1.6 'opensans-regular', sans-serif;
+}

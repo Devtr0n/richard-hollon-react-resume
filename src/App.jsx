@@ -10,6 +10,7 @@ import Portfolio from './Components/Portfolio';
 
 function App() {
   const [resumeData, setResumeData] = useState({});
+  const [loadError, setLoadError] = useState(false);
 
   useEffect(() => {
     fetch('/resumeData.json', { cache: 'no-cache' })
@@ -20,8 +21,21 @@ function App() {
         return response.json();
       })
       .then(data => setResumeData(data))
-      .catch(err => console.error(err));
+      .catch(err => {
+        console.error(err);
+        setLoadError(true);
+      });
   }, []);
+
+  if (loadError) {
+    return (
+      <div className="App">
+        <div role="alert" className="load-error">
+          <p>Sorry, something went wrong loading this page. Please try refreshing.</p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="App">
