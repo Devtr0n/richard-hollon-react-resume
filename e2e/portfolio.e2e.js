@@ -25,6 +25,7 @@ test.describe('Portfolio project links', () => {
     await page.goto('/');
 
     const projectLinks = page.locator('#portfolio-wrapper .portfolio-item a');
+    await expect(projectLinks.first()).toBeVisible();
     const count = await projectLinks.count();
     expect(count).toBeGreaterThan(0);
 

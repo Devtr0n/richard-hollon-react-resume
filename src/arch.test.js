@@ -77,3 +77,34 @@ describe('Architecture: no leftover debug statements', () => {
     expect(contents).not.toMatch(/\bdebugger\b/);
   });
 });
+
+describe('Architecture: safe external links', () => {
+  it.each(sourceFiles.map((file) => [file]))(
+    'every target="_blank" anchor in %s also has rel="noopener noreferrer"',
+    (file) => {
+      const contents = readFileSync(file, 'utf-8');
+      const blankAnchors = contents.match(/<a\b[^>]*target=["']_blank["'][^>]*>/g) || [];
+      for (const anchor of blankAnchors) {
+        expect(anchor).toMatch(/rel=(["']).*\bnoopener\b.*\1/);
+        expect(anchor).toMatch(/rel=(["']).*\bnoreferrer\b.*\1/);
+      }
+    }
+  );
+});
+
+describe('Architecture: no XSS-prone APIs', () => {
+  it.each(sourceFiles.map((file) => [file]))('does not use dangerouslySetInnerHTML in %s', (file) => {
+    const contents = readFileSync(file, 'utf-8');
+    expect(contents).not.toMatch(/dangerouslySetInnerHTML/);
+  });
+});
+
+describe('Architecture: accessible images', () => {
+  it.each(componentFiles.map((file) => [file]))('every <img> in %s has an alt attribute', (file) => {
+    const contents = readFileSync(file, 'utf-8');
+    const imgTags = contents.match(/<img\b[^>]*>/g) || [];
+    for (const img of imgTags) {
+      expect(img).toMatch(/\balt=/);
+    }
+  });
+});
