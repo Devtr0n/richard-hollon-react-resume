@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
 const FORMSPREE_ENDPOINT = import.meta.env.VITE_FORMSPREE_ENDPOINT;
-const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+export const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 function Contact({ data }) {
   const [contactName, setContactName] = useState('');
@@ -79,9 +79,7 @@ function Contact({ data }) {
 	}
   };
 
-  if(data){
-	  var message = data.contactmessage;
-	}
+  const message = data?.contactmessage;
 
 	return (
 	  <section id="contact">

@@ -108,3 +108,23 @@ describe('Architecture: accessible images', () => {
     }
   });
 });
+
+describe('Architecture: modern variable declarations', () => {
+  it.each(sourceFiles.map((file) => [file]))('does not use var in %s', (file) => {
+    const contents = readFileSync(file, 'utf-8');
+    expect(contents).not.toMatch(/(^|[^\w$])var\s+\w/);
+  });
+});
+
+describe('Architecture: no inline style props', () => {
+  it.each(sourceFiles.map((file) => [file]))('does not use the style={{...}} prop in %s', (file) => {
+    const contents = readFileSync(file, 'utf-8');
+    // A single documented exception: CSS custom properties (--foo) can only be
+    // set from JS via the style prop, so allow style objects that exclusively
+    // set custom properties (e.g. style={{ '--skill-level': value }}).
+    const styleProps = contents.match(/style=\{\{[^}]*\}\}/g) || [];
+    for (const styleProp of styleProps) {
+      expect(styleProp).toMatch(/^style=\{\{\s*['"]--[\w-]+['"]\s*:/);
+    }
+  });
+});

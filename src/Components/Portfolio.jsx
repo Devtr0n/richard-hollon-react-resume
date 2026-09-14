@@ -2,11 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 function Portfolio({ data }) {
-
-    if(data){
-      var projects = data.projects.map(function(projects){
-        var projectImage = 'images/portfolio/'+projects.image;
-        var projectImageWebp = projectImage.replace(/\.(jpe?g|png)$/i, '.webp');
+    const projects = data?.projects.map(function(projects){
+        const projectImage = 'images/portfolio/'+projects.image;
+        const projectImageWebp = projectImage.replace(/\.(jpe?g|png)$/i, '.webp');
         return <div key={projects.title} className="columns portfolio-item">
            <div className="item-wrap">
             <a href={projects.url} title={projects.title} target="_blank" rel="noopener noreferrer">
@@ -25,7 +23,6 @@ function Portfolio({ data }) {
           </div>
         </div>
       })
-    }
 
     return (
       <section id="portfolio">

@@ -47,7 +47,7 @@ describe('Resume', () => {
   it('renders skill bars with the correct width and name', () => {
     const { container } = render(<Resume data={data} />);
     const reactSkill = container.querySelector('.bar-expand.react');
-    expect(reactSkill).toHaveStyle({ width: '90%' });
+    expect(reactSkill.style.getPropertyValue('--skill-level')).toBe('90%');
     expect(screen.getByText('React')).toBeInTheDocument();
   });
 

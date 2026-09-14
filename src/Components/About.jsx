@@ -2,22 +2,19 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 function About({ data }) {
+  const profilepic = data ? "images/"+data.image : undefined;
+  const profilepicWebp = profilepic ? profilepic.replace(/\.(jpe?g|png)$/i, '.webp') : undefined;
+  const bio = data?.bio;
+  const city = data?.address?.city;
+  const state = data?.address?.state;
+  const phone = data?.phone;
+  const email = data?.email;
+  const study = data?.study;
+  const interests = data?.interests;
+  const employment = data?.employment;
+  const resumeDownload = data?.resumedownload;
 
-    if(data){
-      var profilepic= "images/"+data.image;
-      var profilepicWebp = profilepic.replace(/\.(jpe?g|png)$/i, '.webp');
-      var bio = data.bio;
-      var city = data.address.city;
-      var state = data.address.state;
-      var phone= data.phone;
-      var email = data.email;
-      var study = data.study;
-      var interests = data.interests;
-      var employment = data.employment;
-      var resumeDownload = data.resumedownload;
-    }
-
-    return (
+  return (
       <section id="about">
       <div className="row">
          <div className="three columns">

@@ -2,9 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 function Testimonials({ data }) {
-
-    if(data){
-      var testimonials = data.testimonials.map(function(testimonials){
+    const testimonials = data?.testimonials.map(function(testimonials){
         return  <li key={testimonials.user}>
             <blockquote>
                <p>{testimonials.text}</p>
@@ -12,7 +10,6 @@ function Testimonials({ data }) {
             </blockquote>
          </li>
       })
-    }
 
     return (
       <section id="testimonials">
