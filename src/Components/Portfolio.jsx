@@ -12,7 +12,7 @@ function Portfolio({ data }) {
             <a href={projects.url} title={projects.title}>
                <picture>
                   <source srcSet={projectImageWebp} type="image/webp" />
-                  <img alt={projects.title} src={projectImage} />
+                  <img alt={projects.title} src={projectImage} loading="lazy" />
                </picture>
                <div className="overlay">
                   <div className="portfolio-item-meta">
