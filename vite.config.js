@@ -16,7 +16,8 @@ export default defineConfig({
     globals: true,
     environment: 'jsdom',
     setupFiles: './src/setupTests.js',
-    exclude: ['**/node_modules/**', '**/e2e/**'],
+    exclude: ['**/node_modules/**', '**/e2e/**', '**/dist/**', '**/build/**', '**/.{idea,git,cache,output,temp}/**'],
+    reporters: ['verbose'],
     env: {
       VITE_FORMSPREE_ENDPOINT: 'https://formspree.io/f/test',
     },
