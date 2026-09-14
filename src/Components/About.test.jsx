@@ -45,6 +45,15 @@ describe('About', () => {
     );
   });
 
+  it('renders a WebP source alongside the JPEG profile pic fallback', () => {
+    render(<About data={data} />);
+    const img = screen.getByAltText('Richard Hollon Profile Pic');
+    expect(img).toHaveAttribute('src', 'images/profilepic.jpg');
+    const source = img.closest('picture').querySelector('source');
+    expect(source).toHaveAttribute('srcset', 'images/profilepic.webp');
+    expect(source).toHaveAttribute('type', 'image/webp');
+  });
+
   it('renders the study, interests, and employment info list', () => {
     render(<About data={data} />);
     expect(screen.getByText('Study:')).toBeInTheDocument();
