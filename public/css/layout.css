@@ -354,15 +354,17 @@ ul#nav li.current a { color: #F06000; }
 	text-align: left;
 }
 .bars .skills {
-  	margin-top: 36px;
+	margin-top: 36px;
    list-style: none;
 }
 .bars li {
    position: relative;
-  	margin-bottom: 60px;
-  	background: #ccc;
-  	height: 42px;
-  	border-radius: 3px;
+	margin-bottom: 28px;
+	background: #e9e9e9;
+	height: 42px;
+	border-radius: 21px;
+   box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.12);
+   overflow: hidden;
 }
 .bars li em {
 	font: 15px 'opensans-bold', sans-serif;
@@ -371,22 +373,55 @@ ul#nav li.current a { color: #F06000; }
    letter-spacing: 2px;
 	font-weight: normal;
    position: relative;
-	top: -36px;
+	display: block;
+	margin-bottom: 8px;
 }
 .bar-expand {
    position: absolute;
    left: 0;
    top: 0;
-   width: var(--skill-level);
+   width: 0;
+   max-width: 100%;
 
    margin: 0;
-   padding-right: 24px;
-    background: #313131;
-   display: inline-block;
-    height: 42px;
+   padding-right: 16px;
+   display: flex;
+   align-items: center;
+   justify-content: flex-end;
+   height: 42px;
    line-height: 42px;
-   border-radius: 3px 0 0 3px;
+   border-radius: 21px;
+   background: linear-gradient(90deg, var(--skill-color-start, #11ABB0), var(--skill-color-end, #313131));
+   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+   animation: skill-fill-in 1.2s ease-out forwards;
+   animation-delay: 0.15s;
 }
+.skill-percent {
+   color: #fff;
+   font: 13px 'opensans-bold', sans-serif;
+   letter-spacing: 1px;
+   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
+   white-space: nowrap;
+}
+@keyframes skill-fill-in {
+   from { width: 0; }
+   to   { width: var(--skill-level); }
+}
+@media (prefers-reduced-motion: reduce) {
+   .bar-expand {
+	  animation: none;
+	  width: var(--skill-level);
+   }
+}
+
+/* colorful per-skill gradients, cycling through a modern palette */
+.bars .skills li:nth-child(7n+1) .bar-expand { --skill-color-start: #11ABB0; --skill-color-end: #0D7377; }
+.bars .skills li:nth-child(7n+2) .bar-expand { --skill-color-start: #6C63FF; --skill-color-end: #3F3D9E; }
+.bars .skills li:nth-child(7n+3) .bar-expand { --skill-color-start: #F06000; --skill-color-end: #C74E00; }
+.bars .skills li:nth-child(7n+4) .bar-expand { --skill-color-start: #00B894; --skill-color-end: #017F63; }
+.bars .skills li:nth-child(7n+5) .bar-expand { --skill-color-start: #E84393; --skill-color-end: #B02E6D; }
+.bars .skills li:nth-child(7n+6) .bar-expand { --skill-color-start: #0984E3; --skill-color-end: #0862A8; }
+.bars .skills li:nth-child(7n+7) .bar-expand { --skill-color-start: #FDCB6E; --skill-color-end: #E1A339; }
 /*
 .git {
   	-moz-animation: git 2s ease;

@@ -16,7 +16,12 @@ function Resume({ data }) {
       })
     const skills = data?.skills.map(function(skills){
         const className = 'bar-expand '+skills.name.toLowerCase();
-        return <li key={skills.name}><span className={className} style={{ '--skill-level': skills.level }}></span><em>{skills.name}</em></li>
+        return <li key={skills.name}>
+            <span className={className} style={{ '--skill-level': skills.level }}>
+              <span className="skill-percent">{skills.level}</span>
+            </span>
+            <em>{skills.name}</em>
+          </li>
       })
 
     return (
