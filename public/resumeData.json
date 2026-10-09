@@ -87,32 +87,80 @@
     ],
     "skills":[
       {
-        "name":"C#",
-        "level":"95%"
+        "category":"Backend",
+        "skills":[
+          {
+            "name":"C#",
+            "level":"95%"
+          },
+          {
+            "name":"ASP.NET Core",
+            "level":"90%"
+          },
+          {
+            "name":"SQL / EF Core",
+            "level":"88%"
+          },
+          {
+            "name":"Software Architecture & Design",
+            "level":"85%"
+          },
+          {
+            "name":"Testing (xUnit / TDD)",
+            "level":"80%"
+          }
+        ]
       },
       {
-        "name":"ASP.NET MVC",
-        "level":"85%"
+        "category":"Cloud / Azure",
+        "skills":[
+          {
+            "name":"Azure",
+            "level":"90%"
+          },
+          {
+            "name":"CI/CD (Azure DevOps)",
+            "level":"88%"
+          }
+        ]
       },
       {
-        "name":"PowerShell",
-        "level":"75%"
+        "category":"Frontend",
+        "skills":[
+          {
+            "name":"React / JavaScript",
+            "level":"70%"
+          }
+        ]
       },
       {
-        "name":"SQL",
-        "level":"90%"
-      },
-      {
-        "name":"HTML5",
-        "level":"89%"
-      },
-      {
-        "name":"JavaScript",
-        "level":"87%"
-      },
-      {
-        "name":"Objective-C",
-        "level":"85%"
+        "category":"Spoken Languages",
+        "skills":[
+          {
+            "name":"English",
+            "level":"100%"
+          },
+          {
+            "name":"Texan",
+            "level":"100%"
+          },
+          {
+            "name":"Australian",
+            "level":"60%"
+          },
+          {
+            "name":"Spanish",
+            "level":"40%"
+          },
+          {
+            "name":"Japanese",
+            "level":"20%"
+          },
+          {
+            "name":"Russian",
+            "level":"15%"
+          }
+        ]
       }
     ]
   },

@@ -14,14 +14,35 @@ function Resume({ data }) {
             <p>{work.description}</p>
         </div>
       })
-    const skills = data?.skills.map(function(skills){
-        const className = 'bar-expand '+skills.name.toLowerCase();
-        return <li key={skills.name}>
-            <span className={className} style={{ '--skill-level': skills.level }}>
-              <span className="skill-percent">{skills.level}</span>
-            </span>
-            <em>{skills.name}</em>
-          </li>
+    const skillCategories = data?.skills.map(function(category){
+        const skills = category.skills.map(function(skill){
+            const slug = skill.name.toLowerCase().replace(/[^a-z0-9]+/g, '-');
+            const className = 'bar-expand '+slug;
+            const levelValue = parseInt(skill.level, 10);
+            const labelId = 'skill-label-' + slug;
+            return <li key={skill.name}>
+                <em id={labelId}>{skill.name}</em>
+                <div
+                  className="bar-track"
+                  role="progressbar"
+                  aria-labelledby={labelId}
+                  aria-valuenow={levelValue}
+                  aria-valuemin={0}
+                  aria-valuemax={100}
+                  aria-valuetext={skill.level}
+                >
+                  <span className={className} style={{ '--skill-level': skill.level }}>
+                    <span className="skill-percent" aria-hidden="true">{skill.level}</span>
+                  </span>
+                </div>
+              </li>
+          })
+        return <div className="skill-category" key={category.category}>
+            <h3>{category.category}</h3>
+            <ul className="skills">
+              {skills}
+            </ul>
+          </div>
       })
 
     return (
@@ -66,15 +87,13 @@ function Resume({ data }) {
             <p>{skillmessage}
             </p>
 
-				<div className="bars">
-				   <ul className="skills">
-					  {skills}
-					</ul>
+				<div className="bars skill-categories">
+				   {skillCategories}
 				</div>
 			</div>
-      </div>
+	  </div>
    </section>
-    );
+	);
 }
 
 Resume.propTypes = {
@@ -98,8 +117,13 @@ Resume.propTypes = {
     ),
     skills: PropTypes.arrayOf(
       PropTypes.shape({
-        name: PropTypes.string.isRequired,
-        level: PropTypes.string,
+        category: PropTypes.string.isRequired,
+        skills: PropTypes.arrayOf(
+          PropTypes.shape({
+            name: PropTypes.string.isRequired,
+            level: PropTypes.string,
+          })
+        ),
       })
     ),
   }),

@@ -236,6 +236,7 @@
    #resume h3, #resume .info { text-align: center; }
       
    .bars { width: 100%; }
+   .bars.skill-categories { grid-template-columns: 1fr; }
 
 
    /* Call To Action Section

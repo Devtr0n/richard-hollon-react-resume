@@ -57,6 +57,18 @@ describe('resumeData.json contract', () => {
     }
   });
 
+  it('has a resume.skills array grouped into categories with name/level entries', () => {
+    for (const category of resumeData.resume.skills) {
+      expect(category.category).toBeTypeOf('string');
+      expect(Array.isArray(category.skills)).toBe(true);
+
+      for (const skill of category.skills) {
+        expect(skill.name).toBeTypeOf('string');
+        expect(skill.level).toMatch(/^\d{1,3}%$/);
+      }
+    }
+  });
+
   it('has a portfolio.projects array with title, category, image, and url for every entry', () => {
     expect(resumeData.portfolio).toBeTypeOf('object');
     expect(Array.isArray(resumeData.portfolio.projects)).toBe(true);

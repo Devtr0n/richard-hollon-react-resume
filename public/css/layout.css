@@ -353,18 +353,28 @@ ul#nav li.current a { color: #F06000; }
 	padding: 0;
 	text-align: left;
 }
+.bars.skill-categories {
+   display: grid;
+   grid-template-columns: repeat(2, 1fr);
+   gap: 36px 48px;
+   margin-top: 36px;
+}
+.skill-category h3 {
+   font: 18px 'opensans-bold', sans-serif;
+   color: #313131;
+   text-transform: uppercase;
+   letter-spacing: 1px;
+   margin: 0 0 20px 0;
+   padding-bottom: 10px;
+   border-bottom: 2px solid #11ABB0;
+}
 .bars .skills {
-	margin-top: 36px;
+   margin: 0;
    list-style: none;
 }
 .bars li {
    position: relative;
 	margin-bottom: 28px;
-	background: #e9e9e9;
-	height: 42px;
-	border-radius: 21px;
-   box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.12);
-   overflow: hidden;
 }
 .bars li em {
 	font: 15px 'opensans-bold', sans-serif;
@@ -376,19 +386,27 @@ ul#nav li.current a { color: #F06000; }
 	display: block;
 	margin-bottom: 8px;
 }
+.bar-track {
+   position: relative;
+   background: #e9e9e9;
+   height: 42px;
+   border-radius: 21px;
+   box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.12);
+   overflow: hidden;
+}
 .bar-expand {
    position: absolute;
    left: 0;
    top: 0;
    width: 0;
    max-width: 100%;
+   height: 100%;
 
    margin: 0;
    padding-right: 16px;
    display: flex;
    align-items: center;
    justify-content: flex-end;
-   height: 42px;
    line-height: 42px;
    border-radius: 21px;
    background: linear-gradient(90deg, var(--skill-color-start, #11ABB0), var(--skill-color-end, #313131));

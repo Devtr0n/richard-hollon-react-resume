@@ -21,10 +21,22 @@ const data = {
     },
   ],
   skills: [
-    { name: 'React', level: '90%' },
-    { name: 'CSharp', level: '95%' },
+    {
+      category: 'Frontend',
+      skills: [
+        { name: 'React', level: '90%' },
+      ],
+    },
+    {
+      category: 'Backend',
+      skills: [
+        { name: 'CSharp', level: '95%' },
+      ],
+    },
   ],
 };
+
+const totalSkillCount = data.skills.reduce((count, category) => count + category.skills.length, 0);
 
 describe('Resume', () => {
   it('renders the skill message', () => {
@@ -49,6 +61,29 @@ describe('Resume', () => {
     const reactSkill = container.querySelector('.bar-expand.react');
     expect(reactSkill.style.getPropertyValue('--skill-level')).toBe('90%');
     expect(screen.getByText('React')).toBeInTheDocument();
+  });
+
+  it('renders a heading for each skill category', () => {
+    render(<Resume data={data} />);
+    expect(screen.getByRole('heading', { name: 'Frontend' })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: 'Backend' })).toBeInTheDocument();
+  });
+
+  it('exposes skill bars as accessible progressbars', () => {
+    const { container } = render(<Resume data={data} />);
+    const progressbars = container.querySelectorAll('[role="progressbar"]');
+    expect(progressbars).toHaveLength(totalSkillCount);
+
+    const reactBar = Array.from(progressbars).find(
+      (bar) => bar.getAttribute('aria-valuenow') === '90'
+    );
+    expect(reactBar).toBeTruthy();
+    expect(reactBar).toHaveAttribute('aria-valuemin', '0');
+    expect(reactBar).toHaveAttribute('aria-valuemax', '100');
+    expect(reactBar).toHaveAttribute('aria-valuetext', '90%');
+
+    const labelId = reactBar.getAttribute('aria-labelledby');
+    expect(document.getElementById(labelId)).toHaveTextContent('React');
   });
 
   it('renders without crashing when no data is provided', () => {
