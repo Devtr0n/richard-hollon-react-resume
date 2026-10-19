@@ -17,7 +17,7 @@ const data = {
   study: 'Texas State Technical College',
   interests: 'Travel, Hummingbirds, Cooking',
   employment: 'iAAWG / iA American Financial Group',
-  resumedownload: '/content/Richard.Hollon.Resume.2021.pdf',
+  resumedownload: '/content/Richard.Hollon.Resume.2027.pdf',
 };
 
 describe('About', () => {

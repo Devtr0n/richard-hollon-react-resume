@@ -7,7 +7,7 @@ const data = {
   name: 'Richard Hollon',
   occupation: 'Senior Full Stack .NET Developer',
   description: 'with over 20 years of relevant experience.',
-  resumedownload: '/content/Richard.Hollon.Resume.2021.pdf',
+  resumedownload: '/content/Richard.Hollon.Resume.2027.pdf',
   social: [
     { name: 'github', url: 'http://github.com/Devtr0n', className: 'fa fa-github' },
   ],

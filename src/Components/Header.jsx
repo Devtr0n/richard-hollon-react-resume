@@ -98,7 +98,7 @@ function Header({ data }) {
 			   {networks}
 			</ul>
 			<div className="banner-buttons">
-			  <a href={resumeDownload} className="button resume-button">Resume <i className="fa fa-download"></i></a>
+			  <a href={resumeDownload} className="button resume-button" target="_blank" rel="noopener noreferrer">Resume <i className="fa fa-download"></i></a>
 			  <a className="button contact-button smoothscroll" href="#contact" onClick={handleNavClick}>Contact</a>
 			</div>
 			 </div>
