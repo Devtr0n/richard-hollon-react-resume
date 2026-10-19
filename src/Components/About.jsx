@@ -8,6 +8,7 @@ function About({ data }) {
   const city = data?.address?.city;
   const state = data?.address?.state;
   const phone = data?.phone;
+  const focus = data?.focus;
   const email = data?.email;
   const study = data?.study;
   const interests = data?.interests;
@@ -38,7 +39,8 @@ function About({ data }) {
                <div className="six columns">
                   <ul className="info-list">
                      <li><i className="fa fa-star"></i><strong>Interests:</strong> {interests}</li>
-                     <li><i className="fa fa-phone"></i><strong>Phone:</strong> {phone}</li>
+                     {focus && <li><i className="fa fa-code"></i><strong>Focus:</strong> {focus}</li>}
+                     {phone && <li><i className="fa fa-phone"></i><strong>Phone:</strong> {phone}</li>}
                      <li><i className="fa fa-envelope"></i><strong>Email:</strong> {email}</li>
                   </ul>
                </div>
@@ -66,6 +68,7 @@ About.propTypes = {
       state: PropTypes.string,
     }),
     phone: PropTypes.string,
+    focus: PropTypes.string,
     email: PropTypes.string,
     study: PropTypes.string,
     interests: PropTypes.string,

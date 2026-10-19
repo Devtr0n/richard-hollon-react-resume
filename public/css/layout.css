@@ -249,8 +249,9 @@ ul#nav li.current a { color: #F06000; }
 }
 #about .profile-pic {
    position: relative;
-   width: 120px;
-   height: 120px;
+   width: 200px;
+   height: 200px;
+   object-fit: cover;
    border-radius: 4px;
 }
 #about .about-info-list { margin-bottom: 12px; }
