@@ -25,8 +25,7 @@ function Footer({ data }) {
          </ul>
 
          <ul className="copyright">
-            <li>&copy; Copyright 2021 Richard Hollon</li>
-            <li>Design by <a title="Styleshout" href="http://www.styleshout.com/">Styleshout</a></li>
+            <li>&copy; Copyright 2027 Richard Hollon</li>
          </ul>
 
       </div>
