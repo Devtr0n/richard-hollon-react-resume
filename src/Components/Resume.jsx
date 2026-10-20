@@ -50,7 +50,7 @@ function Resume({ data }) {
 
       <div className="row education">
          <div className="three columns header-col">
-            <h1><span>Education</span></h1>
+            <h2><span>Education</span></h2>
          </div>
 
          <div className="nine columns main-col">
@@ -66,7 +66,7 @@ function Resume({ data }) {
       <div className="row work">
 
          <div className="three columns header-col">
-            <h1><span>Recent Work</span></h1>
+            <h2><span>Recent Work</span></h2>
          </div>
 
          <div className="nine columns main-col">
@@ -79,7 +79,7 @@ function Resume({ data }) {
       <div className="row skill">
 
          <div className="three columns header-col">
-            <h1><span>Skills</span></h1>
+            <h2><span>Skills</span></h2>
          </div>
 
          <div className="nine columns main-col">

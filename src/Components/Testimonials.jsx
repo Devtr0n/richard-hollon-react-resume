@@ -17,7 +17,7 @@ function Testimonials({ data }) {
          <div className="row">
 
             <div className="two columns header-col">
-               <h1><span>Client Testimonials</span></h1>
+               <h2><span>Client Testimonials</span></h2>
             </div>
 
             <div className="ten columns flex-container">

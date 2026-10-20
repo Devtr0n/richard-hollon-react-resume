@@ -88,7 +88,7 @@ function Contact({ data }) {
 
 			<div className="two columns header-col">
 
-			   <h1><span>Get In Touch.</span></h1>
+			   <h2><span>Get In Touch.</span></h2>
 
 			</div>
 
