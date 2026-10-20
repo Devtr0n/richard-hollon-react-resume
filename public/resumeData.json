@@ -129,8 +129,20 @@
         "category":"Frontend",
         "skills":[
           {
-            "name":"React / JavaScript",
-            "level":"70%"
+            "name":"SvelteKit",
+            "level":"95%"
+          },
+          {
+            "name":"JavaScript / TypeScript",
+            "level":"85%"
+          },
+          {
+            "name":"React",
+            "level":"80%"
+          },
+          {
+            "name":"Tailwind CSS",
+            "level":"75%"
           }
         ]
       },
