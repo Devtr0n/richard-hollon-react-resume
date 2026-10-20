@@ -54,6 +54,41 @@ describe('About', () => {
     expect(source).toHaveAttribute('type', 'image/webp');
   });
 
+  it('renders the focus row when focus is provided', () => {
+    // Arrange
+    const focus = 'Backend, .NET, Azure';
+
+    // Act
+    render(<About data={{ ...data, focus }} />);
+
+    // Assert
+    expect(screen.getByText('Focus:')).toBeInTheDocument();
+    expect(screen.getByText(focus)).toBeInTheDocument();
+  });
+
+  it('omits the focus row when focus is not provided', () => {
+    // Arrange
+    const withoutFocus = { ...data };
+
+    // Act
+    render(<About data={withoutFocus} />);
+
+    // Assert
+    expect(screen.queryByText('Focus:')).not.toBeInTheDocument();
+  });
+
+  it('omits the phone row when phone is not provided', () => {
+    // Arrange
+    const withoutPhone = { ...data, phone: '' };
+
+    // Act
+    render(<About data={withoutPhone} />);
+
+    // Assert
+    expect(screen.queryByText('Phone:')).not.toBeInTheDocument();
+    expect(screen.getByText(data.email)).toBeInTheDocument();
+  });
+
   it('renders the study, interests, and employment info list', () => {
     render(<About data={data} />);
     expect(screen.getByText('Study:')).toBeInTheDocument();

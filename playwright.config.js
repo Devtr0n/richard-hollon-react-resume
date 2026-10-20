@@ -18,6 +18,9 @@ export default defineConfig({
     url: 'http://localhost:4173',
     reuseExistingServer: !process.env.CI,
     timeout: 120_000,
+    env: {
+      VITE_FORMSPREE_ENDPOINT: 'https://formspree.io/f/test',
+    },
   },
   projects: [
     { name: 'chromium', use: { ...devices['Desktop Chrome'] } },
