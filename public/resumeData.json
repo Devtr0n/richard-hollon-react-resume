@@ -113,15 +113,27 @@
         ]
       },
       {
-        "category":"Cloud / Azure",
+        "category":"Cloud",
         "skills":[
           {
             "name":"Azure",
+            "level":"98%"
+          },
+          {
+            "name":"PowerShell",
+            "level":"95%"
+          },
+          {
+            "name":"App Insights",
             "level":"90%"
           },
           {
             "name":"CI/CD (Azure DevOps)",
             "level":"88%"
+          },
+          {
+            "name":"AWS",
+            "level":"85%"
           }
         ]
       },
