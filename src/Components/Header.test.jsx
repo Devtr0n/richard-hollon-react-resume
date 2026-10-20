@@ -61,6 +61,47 @@ describe('Header', () => {
     pushStateSpy.mockRestore();
   });
 
+  it('opens the mobile menu when Show navigation is clicked', async () => {
+    // Arrange
+    const { container } = render(<Header data={data} />);
+    const nav = container.querySelector('#nav-wrap');
+    const user = userEvent.setup();
+
+    // Act
+    await user.click(screen.getByTitle('Show navigation'));
+
+    // Assert
+    expect(nav).toHaveClass('menu-open');
+  });
+
+  it('closes the mobile menu when Hide navigation is clicked', async () => {
+    // Arrange
+    const { container } = render(<Header data={data} />);
+    const nav = container.querySelector('#nav-wrap');
+    const user = userEvent.setup();
+    await user.click(screen.getByTitle('Show navigation'));
+
+    // Act
+    await user.click(screen.getByTitle('Hide navigation'));
+
+    // Assert
+    expect(nav).not.toHaveClass('menu-open');
+  });
+
+  it('closes the mobile menu after a nav item is clicked', async () => {
+    // Arrange
+    const { container } = render(<Header data={data} />);
+    const nav = container.querySelector('#nav-wrap');
+    const user = userEvent.setup();
+    await user.click(screen.getByTitle('Show navigation'));
+    expect(nav).toHaveClass('menu-open');
+
+    // Act
+    await user.click(screen.getByRole('link', { name: 'About' }));
+
+    // Assert
+    expect(nav).not.toHaveClass('menu-open');
+  });
   it('smooth-scrolls to the target section on nav click without jQuery', async () => {
     document.body.innerHTML = '<div id="root"></div>';
     render(<Header data={data} />, { container: document.getElementById('root') });

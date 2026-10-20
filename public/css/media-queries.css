@@ -136,8 +136,8 @@
    #nav-wrap > a:after { top: 60%; }
 
    /* toggle buttons */
-	#nav-wrap:not( :target ) > a:first-of-type,
-	#nav-wrap:target > a:last-of-type  {
+	#nav-wrap:not( .menu-open ) > a:first-of-type,
+	#nav-wrap.menu-open > a:last-of-type  {
 	   display: block;
 	}
 
@@ -155,7 +155,7 @@
    }
 
    /* display menu panels */
-	#nav-wrap:target > ul#nav	{
+	#nav-wrap.menu-open > ul#nav	{
 	   display: block;
       padding: 30px 20px 48px 20px;
       background: #1f2024;

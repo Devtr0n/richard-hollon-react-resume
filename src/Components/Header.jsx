@@ -1,9 +1,20 @@
-import React, { useRef, useEffect, useCallback } from 'react';
+import React, { useRef, useEffect, useCallback, useState } from 'react';
 import PropTypes from 'prop-types';
 
 function Header({ data }) {
   const navRef = useRef(null);
   const sectionObserverRef = useRef(null);
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  const openMenu = useCallback((e) => {
+    e.preventDefault();
+    setMenuOpen(true);
+  }, []);
+
+  const closeMenu = useCallback((e) => {
+    e.preventDefault();
+    setMenuOpen(false);
+  }, []);
 
   const handleScroll = useCallback(() => {
 	const nav = navRef.current;
@@ -20,6 +31,7 @@ function Header({ data }) {
   }, []);
 
   const handleNavClick = useCallback((e) => {
+	setMenuOpen(false);
 	const targetId = e.currentTarget.getAttribute('href');
 	if (!targetId || !targetId.startsWith('#')) return;
 	const target = document.querySelector(targetId);
@@ -74,10 +86,10 @@ function Header({ data }) {
   return (
 	<header id="home">
 
-	<nav id="nav-wrap" ref={navRef}>
+	<nav id="nav-wrap" ref={navRef} className={menuOpen ? 'menu-open' : undefined}>
 
-	   <a className="mobile-btn" href="#nav-wrap" title="Show navigation">Show navigation</a>
-		  <a className="mobile-btn" href="#home" title="Hide navigation">Hide navigation</a>
+		   <a className="mobile-btn" href="#nav-wrap" title="Show navigation" onClick={openMenu}>Show navigation</a>
+			  <a className="mobile-btn" href="#home" title="Hide navigation" onClick={closeMenu}>Hide navigation</a>
 
 	   <ul id="nav" className="nav">
 		  <li><a className="smoothscroll" href="#about" onClick={handleNavClick}>About</a></li>
